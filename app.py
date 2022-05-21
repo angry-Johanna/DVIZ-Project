@@ -12,12 +12,38 @@ import plotly.express as px
 # ----------- #
 # IMPORT DATA #
 # ----------- #
+path = 'https://raw.githubusercontent.com/angry-Johanna/DVIZ-Project/main/data_csv/'
+
+
+# Import Kriterien Gemuesekauf Data
+# bio
+KG_bio_imm = pd.read_csv(path + "Kriterien_Gemuesekauf/bio/bio_immer.CSV")
+KG_bio_mei = pd.read_csv(path + "Kriterien_Gemuesekauf/bio/bio_meistens.CSV")
+KG_bio_gel = pd.read_csv(path + "Kriterien_Gemuesekauf/bio/bio_gelegentlich.CSV")
+KG_bio_sel = pd.read_csv(path + "Kriterien_Gemuesekauf/bio/bio_selten.CSV")
+KG_bio_nie = pd.read_csv(path + "Kriterien_Gemuesekauf/bio/bio_nie.CSV")
+
+# regional
+KG_reg_imm = pd.read_csv(path + "Kriterien_Gemuesekauf/regional/reg_immer.CSV")
+KG_reg_mei = pd.read_csv(path + "Kriterien_Gemuesekauf/regional/reg_meistens.CSV")
+KG_reg_gel = pd.read_csv(path + "Kriterien_Gemuesekauf/regional/reg_gelegentlich.CSV")
+KG_reg_sel = pd.read_csv(path + "Kriterien_Gemuesekauf/regional/reg_selten.CSV")
+KG_reg_nie = pd.read_csv(path + "Kriterien_Gemuesekauf/regional/reg_nie.CSV")
+
+# seasonal
+KG_sai_imm = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_immer.CSV")
+KG_sai_mei = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_meistens.CSV")
+KG_sai_gel = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_gelegentlich.CSV")
+KG_sai_sel = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_selten.CSV")
+KG_sai_nie = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_nie.CSV")
 
 
 
 # ---- #
 # DATA #
 # ---- #
+
+
 
 # Test-dataset
 data = dict(
