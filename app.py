@@ -90,6 +90,7 @@ app.layout = html.Div([
 @app.callback(
     Output("graph-organic", "figure"), 
     Input("checklist", "value"))
+
 def update_line_chart(cat):
     df = KG_bio_comp
     mask = df.Category.isin(cat)
