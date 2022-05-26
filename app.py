@@ -41,6 +41,10 @@ KG_sai_nie = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_nie.CSV",se
 KG_sai_comp = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_complete.CSV",sep=";")
 
 
+
+# import type of food eaten per person
+ft_per_pers = pd.read_csv(path + "csv_Nahrungsmittelverbrauch_Bilanz_pro_Pers_new_sunburst.csv",sep=";")
+
 # ---- #
 # DATA #
 # ---- #
@@ -77,6 +81,32 @@ app.layout = html.Div([
         options=["Always", "Often", "Sometimes","Rarely","Never"],
         value=["Always", "Never"],
         inline=True
+    ),
+    
+    html.H4('Type of Food consumed per person'),
+    dcc.Graph(id="graph-foodtype"),
+    dcc.Slider(
+        min=2007, 
+        max=2020,
+        step=None,
+        marks= {
+            2007: "2007",
+            2008: "2008",
+            2009: "2009",
+            2010: "2010",
+            2011: "2011",
+            2012: "2012",
+            2013: "2013",
+            2014: "2014",
+            2015: "2015",
+            2016: "2016",
+            2017: "2017",
+            2018: "2018",
+            2019: "2019",
+            2020: "2020"
+        },
+        id="slider_foodtype",
+        value=2007
     )
     
 ])
@@ -87,6 +117,7 @@ app.layout = html.Div([
 # CALLBACKS #
 # --------- #
 
+# callback for organic food
 @app.callback(
     Output("graph-organic", "figure"), 
     Input("checklist", "value"))
@@ -100,6 +131,23 @@ def update_line_chart(cat):
     fig.update_yaxes(range=[0,100])
     return fig
 
+# callback for sunburst
+@app.callback(
+    Output("graph-foodtype", "figure"), 
+    Input("slider_foodtype", "value"))
+
+def update_sunburst_chart(year):
+    df = ft_per_pers
+    mask = df.year.isin([year])
+    fig =  px.sunburst(
+        ft_per_pers[mask], 
+        path=["Type","Food"], 
+        values="Amount",
+        color="Type",
+        color_discrete_map={'(?)':'black', "plantbased":"green","animalbased":"red"},
+        )
+    fig.update_traces(insidetextorientation='radial')
+    return fig
 
 
 
