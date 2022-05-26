@@ -65,6 +65,47 @@ ft_per_pers = pd.read_csv(path + "csv_Nahrungsmittelverbrauch_Bilanz_pro_Pers_ne
 # FIGURES #
 # ------- #
 
+# ------- LINE CHART ---------
+# initial chart
+fig_line = go.Figure()
+
+# drop duplicates from category
+KG_bio_comp_cat = KG_bio_comp.Category.drop_duplicates()
+
+# add lines for each category
+for index, value in KG_bio_comp_cat.items():
+    # mask to draw a line for each category individually
+    mask = KG_bio_comp.Category.isin([value])
+    # create names for lines
+    name_men = "Men buying "+value.lower()+" organic"
+    name_women = "Women buying "+value.lower()+" organic"
+    # add line for men
+    fig_line.add_trace(go.Scatter(
+    x=KG_bio_comp[mask].Year, 
+    y=KG_bio_comp[mask].Mann,
+    name = name_men,
+    text = "blabla"
+    ))
+    # add line for women
+    fig_line.add_trace(go.Scatter(
+    x=KG_bio_comp[mask].Year, 
+    y=KG_bio_comp[mask].Frau,
+    name = name_women
+    ))
+
+# make it pretty
+fig_line.update_layout(
+    title="Shopping organic",
+    xaxis_title="Year",
+    yaxis_title="Percentage",
+    legend_title="Legend Title",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="RebeccaPurple"
+    )
+)
+fig_line.update_yaxes(range=[0,100])
 
 # ---------- #
 # APP & HTML #
@@ -74,15 +115,18 @@ app = dash.Dash(__name__)
 server = app.server
 
 app.layout = html.Div([
-    html.H4('Shopping Organic'),
-    dcc.Graph(id="graph-organic"),
-    dcc.Checklist(
-        id="checklist",
-        options=["Always", "Often", "Sometimes","Rarely","Never"],
-        value=["Always", "Never"],
-        inline=True
-    ),
     
+    # Buying organic
+    html.Div([
+        html.Label("Buying organic", style={'font-size': 'medium'}),
+        html.Br(),
+        html.Label('Click on it to know more!', style={'font-size':'9px'}),
+        html.Br(), 
+        html.Br(), 
+        dcc.Graph(figure=fig_line)
+    ]),
+    
+    # sunburst
     html.H4('Type of Food consumed per person'),
     dcc.Graph(id="graph-foodtype"),
     dcc.Slider(
@@ -116,20 +160,6 @@ app.layout = html.Div([
 # --------- #
 # CALLBACKS #
 # --------- #
-
-# callback for organic food
-@app.callback(
-    Output("graph-organic", "figure"), 
-    Input("checklist", "value"))
-
-def update_line_chart(cat):
-    df = KG_bio_comp
-    mask = df.Category.isin(cat)
-    fig = px.line(df[mask], 
-        x="Year", y=["Frau","Mann"])
-    fig.update_xaxes(type='category')
-    fig.update_yaxes(range=[0,100])
-    return fig
 
 # callback for sunburst
 @app.callback(
