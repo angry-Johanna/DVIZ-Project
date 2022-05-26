@@ -65,12 +65,15 @@ ft_per_pers = pd.read_csv(path + "csv_Nahrungsmittelverbrauch_Bilanz_pro_Pers_ne
 # FIGURES #
 # ------- #
 
-# ------- LINE CHART ---------
+# ------- LINE CHART ORGANIC ---------
 # initial chart
-fig_line = go.Figure()
+fig_line_org = go.Figure()
 
 # drop duplicates from category
 KG_bio_comp_cat = KG_bio_comp.Category.drop_duplicates()
+
+# color_map to color lines
+color_map = {"Always":"#199c61","Often":"Green","Sometimes":"Yellow","Rarely":"Orange","Never":"Red"}
 
 # add lines for each category
 for index, value in KG_bio_comp_cat.items():
@@ -80,21 +83,23 @@ for index, value in KG_bio_comp_cat.items():
     name_men = "Men buying "+value.lower()+" organic"
     name_women = "Women buying "+value.lower()+" organic"
     # add line for men
-    fig_line.add_trace(go.Scatter(
+    fig_line_org.add_trace(go.Scatter(
     x=KG_bio_comp[mask].Year, 
     y=KG_bio_comp[mask].Mann,
     name = name_men,
-    text = "blabla"
+    text = "blabla",
+    marker = {'color' : color_map[value]}
     ))
     # add line for women
-    fig_line.add_trace(go.Scatter(
+    fig_line_org.add_trace(go.Scatter(
     x=KG_bio_comp[mask].Year, 
     y=KG_bio_comp[mask].Frau,
-    name = name_women
+    name = name_women,
+    marker = {'color' : color_map[value]}
     ))
 
 # make it pretty
-fig_line.update_layout(
+fig_line_org.update_layout(
     title="Shopping organic",
     xaxis_title="Year",
     yaxis_title="Percentage",
@@ -105,7 +110,102 @@ fig_line.update_layout(
         color="RebeccaPurple"
     )
 )
-fig_line.update_yaxes(range=[0,100])
+fig_line_org.update_yaxes(range=[0,100])
+
+# ------- LINE CHART SEASONAL ---------
+# initial chart
+fig_line_sea = go.Figure()
+
+# drop duplicates from category
+KG_sai_comp_cat = KG_sai_comp.Category.drop_duplicates()
+
+# color_map to color lines
+color_map = {"Always":"Green","Often":"Green","Sometimes":"Yellow","Rarely":"Orange","Never":"Red"}
+
+# add lines for each category
+for index, value in KG_sai_comp_cat.items():
+    # mask to draw a line for each category individually
+    mask = KG_sai_comp.Category.isin([value])
+    # create names for lines
+    name_men = "Men buying "+value.lower()+" seasonal"
+    name_women = "Women buying "+value.lower()+" seasonal"
+    # add line for men
+    fig_line_sea.add_trace(go.Scatter(
+    x=KG_sai_comp[mask].Year, 
+    y=KG_sai_comp[mask].Mann,
+    name = name_men,
+    text = "blabla",
+    marker = {'color' : color_map[value]}
+    ))
+    # add line for women
+    fig_line_sea.add_trace(go.Scatter(
+    x=KG_sai_comp[mask].Year, 
+    y=KG_sai_comp[mask].Frau,
+    name = name_women,
+    marker = {'color' : color_map[value]}
+    ))
+
+# make it pretty
+fig_line_sea.update_layout(
+    title="Shopping seasonal",
+    xaxis_title="Year",
+    yaxis_title="Percentage",
+    legend_title="Legend Title",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="RebeccaPurple"
+    )
+)
+fig_line_sea.update_yaxes(range=[0,100])
+
+# ------- LINE CHART REGIONAL ---------
+# initial chart
+fig_line_reg = go.Figure()
+
+# drop duplicates from category
+KG_reg_comp_cat = KG_reg_comp.Category.drop_duplicates()
+
+# color_map to color lines
+color_map = {"Always":"Green","Often":"Green","Sometimes":"Yellow","Rarely":"Orange","Never":"Red"}
+
+# add lines for each category
+for index, value in KG_reg_comp_cat.items():
+    # mask to draw a line for each category individually
+    mask = KG_reg_comp.Category.isin([value])
+    # create names for lines
+    name_men = "Men buying "+value.lower()+" regional"
+    name_women = "Women buying "+value.lower()+" regional"
+    # add line for men
+    fig_line_reg.add_trace(go.Scatter(
+    x=KG_reg_comp[mask].Year, 
+    y=KG_reg_comp[mask].Mann,
+    name = name_men,
+    text = "blabla",
+    marker = {'color' : color_map[value]}
+    ))
+    # add line for women
+    fig_line_reg.add_trace(go.Scatter(
+    x=KG_reg_comp[mask].Year, 
+    y=KG_reg_comp[mask].Frau,
+    name = name_women,
+    marker = {'color' : color_map[value]}
+    ))
+
+# make it pretty
+fig_line_reg.update_layout(
+    title="Shopping regional",
+    xaxis_title="Year",
+    yaxis_title="Percentage",
+    legend_title="Legend Title",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="RebeccaPurple"
+    )
+)
+fig_line_reg.update_yaxes(range=[0,100])
+
 
 # ---------- #
 # APP & HTML #
@@ -119,11 +219,25 @@ app.layout = html.Div([
     # Buying organic
     html.Div([
         html.Label("Buying organic", style={'font-size': 'medium'}),
-        html.Br(),
-        html.Label('Click on it to know more!', style={'font-size':'9px'}),
         html.Br(), 
         html.Br(), 
-        dcc.Graph(figure=fig_line)
+        dcc.Graph(figure=fig_line_org)
+    ]),
+    
+    # Buying seasonal
+    html.Div([
+        html.Label("Buying seasonal", style={'font-size': 'medium'}),
+        html.Br(), 
+        html.Br(), 
+        dcc.Graph(figure=fig_line_sea)
+    ]),
+    
+    # Buying regional
+    html.Div([
+        html.Label("Buying regional", style={'font-size': 'medium'}),
+        html.Br(), 
+        html.Br(), 
+        dcc.Graph(figure=fig_line_reg)
     ]),
     
     # sunburst
