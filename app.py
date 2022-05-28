@@ -42,16 +42,25 @@ KG_sai_comp = pd.read_csv(path + "Kriterien_Gemuesekauf/saisonal/sais_complete.C
 
 
 
-# import type of food eaten per person
+# import type of food eaten per person/year
 ft_per_pers = pd.read_csv(path + "csv_Nahrungsmittelverbrauch_Bilanz_pro_Pers_new_sunburst.csv",sep=";")
+
+# import meat consumption per person/year
+meat_cons = pd.read_csv(path + "csv_Fleischbilanz_Verbr_pro_Pers_barchart.csv",sep=";")
 
 # ---- #
 # DATA #
 # ---- #
 
-
-
-# Test-dataset
+# format meat consumption for barchart
+comp_meat = {
+    "Year": meat_cons.Year,     
+    "Cow": meat_cons.Cow, 
+    "Veal":meat_cons.Veal, 
+    "Pig":meat_cons.Pig, 
+    "Chicken":meat_cons.Chicken,
+    "Others" : meat_cons.Total - (meat_cons.Cow + meat_cons.Veal + meat_cons.Pig + meat_cons.Chicken)
+}
 
 
 
@@ -73,7 +82,7 @@ fig_line_org = go.Figure()
 KG_bio_comp_cat = KG_bio_comp.Category.drop_duplicates()
 
 # color_map to color lines
-color_map = {"Always":"#199c61","Often":"Green","Sometimes":"Yellow","Rarely":"Orange","Never":"Red"}
+color_map = {"Always":"#199c61","Often":"#5ae34d","Sometimes":"#c5e34d","Rarely":"#e3c04d","Never":"#e3734d"}
 
 # add lines for each category
 for index, value in KG_bio_comp_cat.items():
@@ -87,14 +96,18 @@ for index, value in KG_bio_comp_cat.items():
     x=KG_bio_comp[mask].Year, 
     y=KG_bio_comp[mask].Mann,
     name = name_men,
-    text = "blabla",
-    marker = {'color' : color_map[value]}
+    mode = 'lines',
+    text = value,
+    marker = {'color' : color_map[value]},
+    line = {'dash': 'dot'}
     ))
     # add line for women
     fig_line_org.add_trace(go.Scatter(
     x=KG_bio_comp[mask].Year, 
     y=KG_bio_comp[mask].Frau,
     name = name_women,
+    mode = 'lines',
+    text = value,
     marker = {'color' : color_map[value]}
     ))
 
@@ -106,11 +119,11 @@ fig_line_org.update_layout(
     legend_title="Legend Title",
     font=dict(
         family="Courier New, monospace",
-        size=18,
+        size=15,
         color="RebeccaPurple"
     )
 )
-fig_line_org.update_yaxes(range=[0,100])
+fig_line_org.update_yaxes(range=[0,50])
 
 # ------- LINE CHART SEASONAL ---------
 # initial chart
@@ -134,14 +147,18 @@ for index, value in KG_sai_comp_cat.items():
     x=KG_sai_comp[mask].Year, 
     y=KG_sai_comp[mask].Mann,
     name = name_men,
-    text = "blabla",
-    marker = {'color' : color_map[value]}
+    mode = 'lines',
+    text = value,
+    marker = {'color' : color_map[value]},
+    line = {'dash': 'dot'}
     ))
     # add line for women
     fig_line_sea.add_trace(go.Scatter(
     x=KG_sai_comp[mask].Year, 
     y=KG_sai_comp[mask].Frau,
     name = name_women,
+    mode = 'lines',
+    text = value,
     marker = {'color' : color_map[value]}
     ))
 
@@ -153,11 +170,11 @@ fig_line_sea.update_layout(
     legend_title="Legend Title",
     font=dict(
         family="Courier New, monospace",
-        size=18,
+        size=15,
         color="RebeccaPurple"
     )
 )
-fig_line_sea.update_yaxes(range=[0,100])
+fig_line_sea.update_yaxes(range=[0,50])
 
 # ------- LINE CHART REGIONAL ---------
 # initial chart
@@ -181,14 +198,18 @@ for index, value in KG_reg_comp_cat.items():
     x=KG_reg_comp[mask].Year, 
     y=KG_reg_comp[mask].Mann,
     name = name_men,
-    text = "blabla",
-    marker = {'color' : color_map[value]}
+    mode = 'lines',
+    text = value,
+    marker = {'color' : color_map[value]},
+    line = {'dash': 'dot'}
     ))
     # add line for women
     fig_line_reg.add_trace(go.Scatter(
     x=KG_reg_comp[mask].Year, 
     y=KG_reg_comp[mask].Frau,
     name = name_women,
+    mode = 'lines',
+    text = value,
     marker = {'color' : color_map[value]}
     ))
 
@@ -200,11 +221,17 @@ fig_line_reg.update_layout(
     legend_title="Legend Title",
     font=dict(
         family="Courier New, monospace",
-        size=18,
+        size=15,
         color="RebeccaPurple"
     )
 )
-fig_line_reg.update_yaxes(range=[0,100])
+fig_line_reg.update_yaxes(range=[0,50])
+fig_barchart = px.bar(comp_meat, x = "Year", y=["Cow", "Veal", "Pig","Chicken", "Others"])
+
+# ------- MEAT CONSUMPTION
+
+
+
 
 
 # ---------- #
@@ -218,7 +245,7 @@ app.layout = html.Div([
     
     # Buying organic
     html.Div([
-        html.H1("Buying organic"),
+        html.H1("Shopping organic groceries"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_org)
@@ -226,7 +253,7 @@ app.layout = html.Div([
     
     # Buying seasonal
     html.Div([
-        html.H1("Buying seasonal"),
+        html.H1("Shopping seasonal groceries"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_sea)
@@ -234,7 +261,7 @@ app.layout = html.Div([
     
     # Buying regional
     html.Div([
-        html.H1("Buying regional"),
+        html.H1("Shopping regional groceries"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_reg)
@@ -265,7 +292,15 @@ app.layout = html.Div([
         },
         id="slider_foodtype",
         value=2007
-    )
+    ),
+    
+    # Meat Consumption
+    html.Div([
+        html.H1("Meat Consumption per person and year"),
+        html.Br(), 
+        html.Br(), 
+        dcc.Graph(figure=fig_barchart)
+    ])
     
 ])
 
