@@ -218,7 +218,7 @@ app.layout = html.Div([
     
     # Buying organic
     html.Div([
-        html.Label("Buying organic", style={'font-size': 'medium'}),
+        html.H1("Buying organic"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_org)
@@ -226,7 +226,7 @@ app.layout = html.Div([
     
     # Buying seasonal
     html.Div([
-        html.Label("Buying seasonal", style={'font-size': 'medium'}),
+        html.H1("Buying seasonal"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_sea)
@@ -234,14 +234,14 @@ app.layout = html.Div([
     
     # Buying regional
     html.Div([
-        html.Label("Buying regional", style={'font-size': 'medium'}),
+        html.H1("Buying regional"),
         html.Br(), 
         html.Br(), 
         dcc.Graph(figure=fig_line_reg)
     ]),
     
     # sunburst
-    html.H4('Type of Food consumed per person'),
+    html.H1('Type of Food consumed per person'),
     dcc.Graph(id="graph-foodtype"),
     dcc.Slider(
         min=2007, 
