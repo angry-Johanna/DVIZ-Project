@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
+import lorem
 
 # ----------- #
 # IMPORT DATA #
@@ -230,9 +231,11 @@ fig_barchart = px.bar(comp_meat, x = "Year", y=["Cow", "Veal", "Pig","Chicken", 
 
 # ------- MEAT CONSUMPTION
 
+# ---------- #
+# Text       #
+# ---------- #
 
-
-
+text_1 = lorem.text()
 
 # ---------- #
 # APP & HTML #
@@ -243,63 +246,65 @@ server = app.server
 
 app.layout = html.Div([
     
+    html.Div([
+        html.H1("How do the Swiss behave regarding grocerie shopping?"),
+        html.P(text_1)
+    ]),
+    
     # Buying organic
     html.Div([
-        html.H1("Shopping organic groceries"),
+        html.H2("Shopping organic groceries"),
+        html.P(text_1),
         html.Br(), 
-        html.Br(), 
-        dcc.Graph(figure=fig_line_org)
+        dcc.Graph(figure=fig_line_org),
+        html.Br(),
+        html.P(text_1),
+        html.Br()
     ]),
     
-    # Buying seasonal
-    html.Div([
-        html.H1("Shopping seasonal groceries"),
-        html.Br(), 
-        html.Br(), 
-        dcc.Graph(figure=fig_line_sea)
-    ]),
-    
-    # Buying regional
-    html.Div([
-        html.H1("Shopping regional groceries"),
-        html.Br(), 
-        html.Br(), 
-        dcc.Graph(figure=fig_line_reg)
-    ]),
     
     # sunburst
-    html.H1('Type of Food consumed per person'),
-    dcc.Graph(id="graph-foodtype"),
-    dcc.Slider(
-        min=2007, 
-        max=2020,
-        step=None,
-        marks= {
-            2007: "2007",
-            2008: "2008",
-            2009: "2009",
-            2010: "2010",
-            2011: "2011",
-            2012: "2012",
-            2013: "2013",
-            2014: "2014",
-            2015: "2015",
-            2016: "2016",
-            2017: "2017",
-            2018: "2018",
-            2019: "2019",
-            2020: "2020"
-        },
-        id="slider_foodtype",
-        value=2007
-    ),
+    html.Div([
+        html.H2('Type of food consumed per person'),
+        html.P(text_1),
+        html.Br(), 
+        dcc.Graph(id="graph-foodtype"),
+        dcc.Slider(
+            min=2007, 
+            max=2020,
+            step=None,
+            marks= {
+                2007: "2007",
+                2008: "2008",
+                2009: "2009",
+                2010: "2010",
+                2011: "2011",
+                2012: "2012",
+                2013: "2013",
+                2014: "2014",
+                2015: "2015",
+                2016: "2016",
+                2017: "2017",
+                2018: "2018",
+                2019: "2019",
+                2020: "2020"
+            },
+            id="slider_foodtype",
+            value=2007),
+        html.Br(),
+        html.P(text_1),
+        html.Br()
+    ]),
     
     # Meat Consumption
     html.Div([
-        html.H1("Meat Consumption per person and year"),
+        html.H2("Meat Consumption per person and year"),
+        html.P(text_1),
         html.Br(), 
-        html.Br(), 
-        dcc.Graph(figure=fig_barchart)
+        dcc.Graph(figure=fig_barchart),
+        html.Br(),
+        html.P(text_1),
+        html.Br()
     ])
     
 ])
