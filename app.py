@@ -101,6 +101,16 @@ fig_line_org.update_layout(
 )
 fig_line_org.update_yaxes(range=[0,50])
 
+# ------- SUNBURST FOODTYPE CONSUMPTION ------
+mask = ft_per_pers.year.isin([2020])
+fig_sunburst = px.sunburst(
+    ft_per_pers[mask], 
+    path=["Type","Food"], 
+    values="Amount", 
+    color="Type",
+    color_discrete_map={'(?)':'black', "plantbased":"green","animalbased":"red"}
+)
+fig_sunburst.update_traces(insidetextorientation='radial')
 
 # ------- BAR CHART MEAT CONSUMPTION ---------
 
@@ -126,32 +136,13 @@ app.layout = html.Div([
         dcc.Graph(figure=fig_line_org)
     ]),
     
-    # sunburst
-    html.H1('Type of Food consumed per person'),
-    dcc.Graph(id="graph-foodtype"),
-    dcc.Slider(
-        min=2007, 
-        max=2020,
-        step=None,
-        marks= {
-            2007: "2007",
-            2008: "2008",
-            2009: "2009",
-            2010: "2010",
-            2011: "2011",
-            2012: "2012",
-            2013: "2013",
-            2014: "2014",
-            2015: "2015",
-            2016: "2016",
-            2017: "2017",
-            2018: "2018",
-            2019: "2019",
-            2020: "2020"
-        },
-        id="slider_foodtype",
-        value=2007
-    ),
+    # Buying organic
+    html.Div([
+        html.H1("Type of Food consumed per person"),
+        html.Br(), 
+        html.Br(), 
+        dcc.Graph(figure=fig_sunburst)
+    ]),
     
     # Meat Consumption
     html.Div([
@@ -168,24 +159,6 @@ app.layout = html.Div([
 # --------- #
 # CALLBACKS #
 # --------- #
-
-# callback for sunburst
-@app.callback(
-    Output("graph-foodtype", "figure"), 
-    Input("slider_foodtype", "value"))
-
-def update_sunburst_chart(year):
-    df = ft_per_pers
-    mask = df.year.isin([year])
-    fig =  px.sunburst(
-        ft_per_pers[mask], 
-        path=["Type","Food"], 
-        values="Amount",
-        color="Type",
-        color_discrete_map={'(?)':'black', "plantbased":"green","animalbased":"red"},
-        )
-    fig.update_traces(insidetextorientation='radial')
-    return fig
 
 
 
