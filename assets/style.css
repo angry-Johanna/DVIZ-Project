@@ -1,11 +1,29 @@
+/* This is a single-line comment */
 body {
-  background-color:#FAF0E6;
+  background-color:#FFFAF0;
   font-family: "Helvetica", sans-serif;
 }
 
-
-h1 {
-  color:#3CB371;
+h1 {color:#008B8B;
   font-family: "Helvetica", sans-serif;
 }
 
+h2 {
+  color:#20B2AA;
+  font-family: "Helvetica", sans-serif;
+}
+
+h3 {
+  color:#8FBC8F;
+  font-family: "Helvetica", sans-serif;
+}
+
+p {
+  color: black;
+  font-family: "Helvetica", sans-serif;
+}
+
+div {
+	margin-left: 50px;
+	margin-right: 50px;
+}
