@@ -25,26 +25,28 @@ ft_per_pers = pd.read_csv(path + "csv_Nahrungsmittelverbrauch_Bilanz_pro_Pers_ne
 # import meat consumption per person/year
 meat_cons = pd.read_csv(path + "csv_Fleischbilanz_Verbr_pro_Pers_barchart.csv",sep=";")
 
+# import organic farms
+org_farm = pd.read_csv(path + "csv_Biologischer_Landbau_bubble.csv",sep=";")
+
 # ---- #
 # DATA #
 # ---- #
 
 # format meat consumption for barchart
-comp_meat = {
+comp_meat = pd.DataFrame({
     "Year": meat_cons.Year,     
     "Cow": meat_cons.Cow, 
     "Veal":meat_cons.Veal, 
     "Pig":meat_cons.Pig, 
     "Chicken":meat_cons.Chicken,
     "Others" : meat_cons.Total - (meat_cons.Cow + meat_cons.Veal + meat_cons.Pig + meat_cons.Chicken)
-}
+})
+# Also remove a few entries
+#comp_meat_5 = comp_meat.query("Year%5==0")
 
 
-
-# ------- #
-# BUTTONS #
-# ------- #
-
+# filter organic farm to take only every 5th year
+org_farm_5 = org_farm.query("Year%5==0")
 
 
 # ------- #
@@ -115,9 +117,30 @@ fig_sunburst.update_traces(insidetextorientation='radial')
 
 # ------- BAR CHART MEAT CONSUMPTION ---------
 
-fig_barchart = px.bar(comp_meat, x = "Year", y=["Cow", "Veal", "Pig","Chicken", "Others"])
+fig_barchart = px.bar(
+    comp_meat, 
+    x = "Year", 
+    y = [
+        "Cow", 
+        "Veal", 
+        "Pig",
+        "Chicken", 
+        "Others"
+    ]
+)
 
-# ------- MEAT CONSUMPTION
+
+# ------ BUBBLE CHART ORGANIC FARMS
+fig_bubble = px.scatter(
+    org_farm_5, 
+    x="Year", 
+    y="Size",
+	size="Number",
+    color="Size",
+    size_max = 40
+)
+
+
 
 # ---------- #
 # Text       #
@@ -156,32 +179,7 @@ app.layout = html.Div([
         html.H2('Type of food consumed per person'),
         html.P(text_1),
         html.Br(), 
-        dcc.Graph(id="graph-foodtype"),
-        dcc.Slider(
-            min=2007, 
-            max=2020,
-            step=None,
-            marks= {
-                2007: "2007",
-                2008: "2008",
-                2009: "2009",
-                2010: "2010",
-                2011: "2011",
-                2012: "2012",
-                2013: "2013",
-                2014: "2014",
-                2015: "2015",
-                2016: "2016",
-                2017: "2017",
-                2018: "2018",
-                2019: "2019",
-                2020: "2020"
-            },
-            id="slider_foodtype",
-            value=2007),
-        html.Br(),
-        html.P(text_1),
-        html.Br()
+        dcc.Graph(figure=fig_sunburst),
     ]),
     
     # Meat Consumption
@@ -190,6 +188,17 @@ app.layout = html.Div([
         html.P(text_1),
         html.Br(), 
         dcc.Graph(figure=fig_barchart),
+        html.Br(),
+        html.P(text_1),
+        html.Br()
+    ]),
+    
+    # Organic Farms
+    html.Div([
+        html.H2("Organic Farms Land usage"),
+        html.P(text_1),
+        html.Br(), 
+        dcc.Graph(figure=fig_bubble),
         html.Br(),
         html.P(text_1),
         html.Br()
