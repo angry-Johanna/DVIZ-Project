@@ -147,6 +147,7 @@ fig_bubble = px.scatter(
 # ---------- #
 
 text_1 = lorem.text()
+text_2 = lorem.paragraph()
 
 # ---------- #
 # APP & HTML #
@@ -159,17 +160,18 @@ app.layout = html.Div([
     
     html.Div([
         html.H1("How do the Swiss behave regarding grocerie shopping?"),
-        html.P(text_1)
+        html.P(text_2),
+        html.P(text_2)
     ]),
     
     # Buying organic
     html.Div([
         html.H2("Shopping organic groceries"),
-        html.P(text_1),
+        html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_line_org),
         html.Br(),
-        html.P(text_1),
+        html.P(text_2),
         html.Br()
     ]),
     
@@ -177,30 +179,32 @@ app.layout = html.Div([
     # sunburst
     html.Div([
         html.H2('Type of food consumed per person'),
-        html.P(text_1),
+        html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
+        html.P(text_2),
+        html.Br(),
     ]),
     
     # Meat Consumption
     html.Div([
         html.H2("Meat Consumption per person and year"),
-        html.P(text_1),
+        html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_barchart),
         html.Br(),
-        html.P(text_1),
+        html.P(text_2),
         html.Br()
     ]),
     
     # Organic Farms
     html.Div([
         html.H2("Organic Farms Land usage"),
-        html.P(text_1),
+        html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_bubble),
         html.Br(),
-        html.P(text_1),
+        html.P(text_2),
         html.Br()
     ])
     
