@@ -1,267 +1,267 @@
-﻿year;Food;Type;Amount
-2007;grain;plantbased;98.383398
-2007;potatoe;plantbased;42.377038
-2007;starch;plantbased;4.090748
-2007;sugar;plantbased;44.639812
-2007;legume;plantbased;0.948839
-2007;nuts;plantbased;8.059203
-2007;oilplants;plantbased;3.737107
-2007;vegetables;plantbased;103.237925
-2007;fruits;plantbased;118.906166
-2007;stimulants;plantbased;12.803394
-2007;spices;plantbased;0.596026
-2007;alcoholic beverages;plantbased;97.535135
-2007;oils, fats;plantbased;15.274903
-2007;others;plantbased;1.179378
-2007;meat;animalbased;51.799506
-2007;eggs;animalbased;11.674521
-2007;fish, shellfish;animalbased;7.384812
-2007;milkproducts;animalbased;260.716707
-2007;fats;animalbased;6.030303
-2008;grain;plantbased;93.982295
-2008;potatoe;plantbased;47.558741
-2008;starch;plantbased;3.809306
-2008;sugar;plantbased;44.928372
-2008;legume;plantbased;0.921267
-2008;nuts;plantbased;7.851179
-2008;oilplants;plantbased;3.933464
-2008;vegetables;plantbased;105.73809
-2008;fruits;plantbased;123.708572
-2008;stimulants;plantbased;13.602101
-2008;spices;plantbased;0.533046
-2008;alcoholic beverages;plantbased;97.670866
-2008;oils, fats;plantbased;15.17728
-2008;others;plantbased;1.359607
-2008;meat;animalbased;52.616272
-2008;eggs;animalbased;11.814422
-2008;fish, shellfish;animalbased;7.544411
-2008;milkproducts;animalbased;257.785763
-2008;fats;animalbased;5.980198
-2009;grain;plantbased;97.215459
-2009;potatoe;plantbased;46.89828
-2009;starch;plantbased;3.405859
-2009;sugar;plantbased;42.363202
-2009;legume;plantbased;0.87722
-2009;nuts;plantbased;7.605226
-2009;oilplants;plantbased;3.665459
-2009;vegetables;plantbased;108.198837
-2009;fruits;plantbased;124.175197
-2009;stimulants;plantbased;11.623583
-2009;spices;plantbased;0.538456
-2009;alcoholic beverages;plantbased;95.880282
-2009;oils, fats;plantbased;16.017389
-2009;others;plantbased;2.102791
-2009;meat;animalbased;51.150578
-2009;eggs;animalbased;11.937904
-2009;fish, shellfish;animalbased;7.769948
-2009;milkproducts;animalbased;251.166057
-2009;fats;animalbased;5.613013
-2010;grain;plantbased;94.333993
-2010;potatoe;plantbased;48.615038
-2010;starch;plantbased;3.620674
-2010;sugar;plantbased;38.895058
-2010;legume;plantbased;0.880352
-2010;nuts;plantbased;7.5877
-2010;oilplants;plantbased;3.630906
-2010;vegetables;plantbased;107.227658
-2010;fruits;plantbased;119.811293
-2010;stimulants;plantbased;12.29413
-2010;spices;plantbased;0.688063
-2010;alcoholic beverages;plantbased;96.389614
-2010;oils, fats;plantbased;15.940529
-2010;others;plantbased;2.061531
-2010;meat;animalbased;52.402102
-2010;eggs;animalbased;12.13013
-2010;fish, shellfish;animalbased;7.85477
-2010;milkproducts;animalbased;254.358356
-2010;fats;animalbased;5.783215
-2011;grain;plantbased;100.44318
-2011;potatoe;plantbased;45.176104
-2011;starch;plantbased;3.990964
-2011;sugar;plantbased;38.986766
-2011;legume;plantbased;0.899333
-2011;nuts;plantbased;7.764535
-2011;oilplants;plantbased;3.674542
-2011;vegetables;plantbased;108.150725
-2011;fruits;plantbased;117.028687
-2011;stimulants;plantbased;12.053128
-2011;spices;plantbased;0.696519
-2011;alcoholic beverages;plantbased;95.298127
-2011;oils, fats;plantbased;16.210125
-2011;others;plantbased;1.800579
-2011;meat;animalbased;52.228734
-2011;eggs;animalbased;11.517631
-2011;fish, shellfish;animalbased;7.817704
-2011;milkproducts;animalbased;257.952612
-2011;fats;animalbased;5.909694
-2012;grain;plantbased;91.942677
-2012;potatoe;plantbased;49.394508
-2012;starch;plantbased;3.354247
-2012;sugar;plantbased;37.622031
-2012;legume;plantbased;0.90551
-2012;nuts;plantbased;7.316361
-2012;oilplants;plantbased;3.454231
-2012;vegetables;plantbased;106.543805
-2012;fruits;plantbased;121.092802
-2012;stimulants;plantbased;12.116296
-2012;spices;plantbased;0.771193
-2012;alcoholic beverages;plantbased;93.899421
-2012;oils, fats;plantbased;14.945669
-2012;others;plantbased;1.556191
-2012;meat;animalbased;50.350228
-2012;eggs;animalbased;11.500115
-2012;fish, shellfish;animalbased;7.506667
-2012;milkproducts;animalbased;253.412178
-2012;fats;animalbased;5.7975
-2013;grain;plantbased;90.23286
-2013;potatoe;plantbased;52.46591
-2013;starch;plantbased;3.153483
-2013;sugar;plantbased;41.695623
-2013;legume;plantbased;0.931403
-2013;nuts;plantbased;8.199711
-2013;oilplants;plantbased;3.748557
-2013;vegetables;plantbased;105.200513
-2013;fruits;plantbased;119.244203
-2013;stimulants;plantbased;12.364101
-2013;spices;plantbased;0.648192
-2013;alcoholic beverages;plantbased;93.341325
-2013;oils, fats;plantbased;16.258062
-2013;others;plantbased;1.842894
-2013;meat;animalbased;50.541677
-2013;eggs;animalbased;11.625214
-2013;fish, shellfish;animalbased;8.038763
-2013;milkproducts;animalbased;257.230438
-2013;fats;animalbased;6.054418
-2014;grain;plantbased;90.027135
-2014;potatoe;plantbased;43.430768
-2014;starch;plantbased;3.171274
-2014;sugar;plantbased;39.077777
-2014;legume;plantbased;0.986715
-2014;nuts;plantbased;8.262729
-2014;oilplants;plantbased;3.676812
-2014;vegetables;plantbased;104.458797
-2014;fruits;plantbased;114.924142
-2014;stimulants;plantbased;11.791218
-2014;spices;plantbased;0.717634
-2014;alcoholic beverages;plantbased;91.970419
-2014;oils, fats;plantbased;16.630264
-2014;others;plantbased;2.465723
-2014;meat;animalbased;50.680754
-2014;eggs;animalbased;11.759391
-2014;fish, shellfish;animalbased;7.674211
-2014;milkproducts;animalbased;253.765322
-2014;fats;animalbased;5.836533
-2015;grain;plantbased;92.570062
-2015;potatoe;plantbased;52.181408
-2015;starch;plantbased;3.455159
-2015;sugar;plantbased;39.576654
-2015;legume;plantbased;1.133554
-2015;nuts;plantbased;8.029775
-2015;oilplants;plantbased;3.9623
-2015;vegetables;plantbased;104.168504
-2015;fruits;plantbased;115.048785
-2015;stimulants;plantbased;12.403538
-2015;spices;plantbased;0.69513
-2015;alcoholic beverages;plantbased;90.740517
-2015;oils, fats;plantbased;15.435807
-2015;others;plantbased;1.968041
-2015;meat;animalbased;49.827563
-2015;eggs;animalbased;11.898155
-2015;fish, shellfish;animalbased;7.77478
-2015;milkproducts;animalbased;252.089965
-2015;fats;animalbased;5.68875
-2016;grain;plantbased;88.860962
-2016;potatoe;plantbased;48.360191
-2016;starch;plantbased;3.148693
-2016;sugar;plantbased;37.914051
-2016;legume;plantbased;1.062723
-2016;nuts;plantbased;8.054424
-2016;oilplants;plantbased;3.87934
-2016;vegetables;plantbased;102.678964
-2016;fruits;plantbased;115.817414
-2016;stimulants;plantbased;11.803722
-2016;spices;plantbased;0.66414
-2016;alcoholic beverages;plantbased;88.603276
-2016;oils, fats;plantbased;16.30235
-2016;others;plantbased;2.819141
-2016;meat;animalbased;49.227691
-2016;eggs;animalbased;11.932903
-2016;fish, shellfish;animalbased;7.848102
-2016;milkproducts;animalbased;246.617719
-2016;fats;animalbased;5.573953
-2017;grain;plantbased;90.435371
-2017;potatoe;plantbased;42.862596
-2017;starch;plantbased;3.40953
-2017;sugar;plantbased;40.807231
-2017;legume;plantbased;1.233071
-2017;nuts;plantbased;8.369815
-2017;oilplants;plantbased;4.043011
-2017;vegetables;plantbased;103.273315
-2017;fruits;plantbased;114.965584
-2017;stimulants;plantbased;11.677441
-2017;spices;plantbased;0.79638
-2017;alcoholic beverages;plantbased;88.636726
-2017;oils, fats;plantbased;16.382124
-2017;others;plantbased;2.868536
-2017;meat;animalbased;48.721239
-2017;eggs;animalbased;12.082578
-2017;fish, shellfish;animalbased;7.499045
-2017;milkproducts;animalbased;243.685586
-2017;fats;animalbased;5.315955
-2018;grain;plantbased;87.474532
-2018;potatoe;plantbased;46.761904
-2018;starch;plantbased;3.734591
-2018;sugar;plantbased;34.25796
-2018;legume;plantbased;1.150492
-2018;nuts;plantbased;8.573121
-2018;oilplants;plantbased;4.037582
-2018;vegetables;plantbased;103.77971
-2018;fruits;plantbased;109.323793
-2018;stimulants;plantbased;12.488329
-2018;spices;plantbased;0.994892
-2018;alcoholic beverages;plantbased;88.900219
-2018;oils, fats;plantbased;16.523023
-2018;others;plantbased;2.461267
-2018;meat;animalbased;48.440912
-2018;eggs;animalbased;12.203648
-2018;fish, shellfish;animalbased;7.493381
-2018;milkproducts;animalbased;240.599223
-2018;fats;animalbased;5.273689
-2019;grain;plantbased;89.463362
-2019;potatoe;plantbased;46.040031
-2019;starch;plantbased;3.105467
-2019;sugar;plantbased;35.495491
-2019;legume;plantbased;1.137933
-2019;nuts;plantbased;8.560503
-2019;oilplants;plantbased;4.347139
-2019;vegetables;plantbased;98.922452
-2019;fruits;plantbased;112.000319
-2019;stimulants;plantbased;12.186539
-2019;spices;plantbased;1.10271
-2019;alcoholic beverages;plantbased;90.255633
-2019;oils, fats;plantbased;15.81909
-2019;others;plantbased;2.755201
-2019;meat;animalbased;47.653006
-2019;eggs;animalbased;12.420055
-2019;fish, shellfish;animalbased;7.31504
-2019;milkproducts;animalbased;234.849412
-2019;fats;animalbased;5.601634
-2020;grain;plantbased;90.536958
-2020;potatoe;plantbased;47.21456
-2020;starch;plantbased;3.075991
-2020;sugar;plantbased;36.475249
-2020;legume;plantbased;1.563563
-2020;nuts;plantbased;8.807505
-2020;oilplants;plantbased;4.406939
-2020;vegetables;plantbased;105.454995
-2020;fruits;plantbased;115.264125
-2020;stimulants;plantbased;11.978032
-2020;spices;plantbased;1.326606
-2020;alcoholic beverages;plantbased;84.765442
-2020;oils, fats;plantbased;17.798555
-2020;others;plantbased;3.149177
-2020;meat;animalbased;47.357699
-2020;eggs;animalbased;12.901044
-2020;fish, shellfish;animalbased;7.595541
-2020;milkproducts;animalbased;238.643691
-2020;fats;animalbased;5.928728
+year;Food;Type;Sub_Type;Amount
+2007;grain;plantbased;carbohydrates;98.383398
+2007;potatoe;plantbased;carbohydrates;42.377038
+2007;starch;plantbased;carbohydrates;4.090748
+2007;sugar;plantbased;carbohydrates;44.639812
+2007;legume;plantbased;fruits and vegetables;0.948839
+2007;nuts;plantbased;oils and fats;8.059203
+2007;oilplants;plantbased;oils and fats;3.737107
+2007;vegetables;plantbased;fruits and vegetables;103.237925
+2007;fruits;plantbased;fruits and vegetables;118.906166
+2007;stimulants;plantbased;others;12.803394
+2007;spices;plantbased;others;0.596026
+2007;alcoholic beverages;plantbased;others;97.535135
+2007;oils, fats;plantbased;oils and fats;15.274903
+2007;others;plantbased;others;1.179378
+2007;meat;animalbased;meat product;51.799506
+2007;eggs;animalbased;dairy;11.674521
+2007;fish, shellfish;animalbased;meat product;7.384812
+2007;milkproducts;animalbased;dairy;260.716707
+2007;fats;animalbased;meat product;6.030303
+2008;grain;plantbased;carbohydrates;93.982295
+2008;potatoe;plantbased;carbohydrates;47.558741
+2008;starch;plantbased;carbohydrates;3.809306
+2008;sugar;plantbased;carbohydrates;44.928372
+2008;legume;plantbased;fruits and vegetables;0.921267
+2008;nuts;plantbased;oils and fats;7.851179
+2008;oilplants;plantbased;oils and fats;3.933464
+2008;vegetables;plantbased;fruits and vegetables;105.73809
+2008;fruits;plantbased;fruits and vegetables;123.708572
+2008;stimulants;plantbased;others;13.602101
+2008;spices;plantbased;others;0.533046
+2008;alcoholic beverages;plantbased;others;97.670866
+2008;oils, fats;plantbased;oils and fats;15.17728
+2008;others;plantbased;others;1.359607
+2008;meat;animalbased;meat product;52.616272
+2008;eggs;animalbased;dairy;11.814422
+2008;fish, shellfish;animalbased;meat product;7.544411
+2008;milkproducts;animalbased;dairy;257.785763
+2008;fats;animalbased;meat product;5.980198
+2009;grain;plantbased;carbohydrates;97.215459
+2009;potatoe;plantbased;carbohydrates;46.89828
+2009;starch;plantbased;carbohydrates;3.405859
+2009;sugar;plantbased;carbohydrates;42.363202
+2009;legume;plantbased;fruits and vegetables;0.87722
+2009;nuts;plantbased;oils and fats;7.605226
+2009;oilplants;plantbased;oils and fats;3.665459
+2009;vegetables;plantbased;fruits and vegetables;108.198837
+2009;fruits;plantbased;fruits and vegetables;124.175197
+2009;stimulants;plantbased;others;11.623583
+2009;spices;plantbased;others;0.538456
+2009;alcoholic beverages;plantbased;others;95.880282
+2009;oils, fats;plantbased;oils and fats;16.017389
+2009;others;plantbased;others;2.102791
+2009;meat;animalbased;meat product;51.150578
+2009;eggs;animalbased;dairy;11.937904
+2009;fish, shellfish;animalbased;meat product;7.769948
+2009;milkproducts;animalbased;dairy;251.166057
+2009;fats;animalbased;meat product;5.613013
+2010;grain;plantbased;carbohydrates;94.333993
+2010;potatoe;plantbased;carbohydrates;48.615038
+2010;starch;plantbased;carbohydrates;3.620674
+2010;sugar;plantbased;carbohydrates;38.895058
+2010;legume;plantbased;fruits and vegetables;0.880352
+2010;nuts;plantbased;oils and fats;7.5877
+2010;oilplants;plantbased;oils and fats;3.630906
+2010;vegetables;plantbased;fruits and vegetables;107.227658
+2010;fruits;plantbased;fruits and vegetables;119.811293
+2010;stimulants;plantbased;others;12.29413
+2010;spices;plantbased;others;0.688063
+2010;alcoholic beverages;plantbased;others;96.389614
+2010;oils, fats;plantbased;oils and fats;15.940529
+2010;others;plantbased;others;2.061531
+2010;meat;animalbased;meat product;52.402102
+2010;eggs;animalbased;dairy;12.13013
+2010;fish, shellfish;animalbased;meat product;7.85477
+2010;milkproducts;animalbased;dairy;254.358356
+2010;fats;animalbased;meat product;5.783215
+2011;grain;plantbased;carbohydrates;100.44318
+2011;potatoe;plantbased;carbohydrates;45.176104
+2011;starch;plantbased;carbohydrates;3.990964
+2011;sugar;plantbased;carbohydrates;38.986766
+2011;legume;plantbased;fruits and vegetables;0.899333
+2011;nuts;plantbased;oils and fats;7.764535
+2011;oilplants;plantbased;oils and fats;3.674542
+2011;vegetables;plantbased;fruits and vegetables;108.150725
+2011;fruits;plantbased;fruits and vegetables;117.028687
+2011;stimulants;plantbased;others;12.053128
+2011;spices;plantbased;others;0.696519
+2011;alcoholic beverages;plantbased;others;95.298127
+2011;oils, fats;plantbased;oils and fats;16.210125
+2011;others;plantbased;others;1.800579
+2011;meat;animalbased;meat product;52.228734
+2011;eggs;animalbased;dairy;11.517631
+2011;fish, shellfish;animalbased;meat product;7.817704
+2011;milkproducts;animalbased;dairy;257.952612
+2011;fats;animalbased;meat product;5.909694
+2012;grain;plantbased;carbohydrates;91.942677
+2012;potatoe;plantbased;carbohydrates;49.394508
+2012;starch;plantbased;carbohydrates;3.354247
+2012;sugar;plantbased;carbohydrates;37.622031
+2012;legume;plantbased;fruits and vegetables;0.90551
+2012;nuts;plantbased;oils and fats;7.316361
+2012;oilplants;plantbased;oils and fats;3.454231
+2012;vegetables;plantbased;fruits and vegetables;106.543805
+2012;fruits;plantbased;fruits and vegetables;121.092802
+2012;stimulants;plantbased;others;12.116296
+2012;spices;plantbased;others;0.771193
+2012;alcoholic beverages;plantbased;others;93.899421
+2012;oils, fats;plantbased;oils and fats;14.945669
+2012;others;plantbased;others;1.556191
+2012;meat;animalbased;meat product;50.350228
+2012;eggs;animalbased;dairy;11.500115
+2012;fish, shellfish;animalbased;meat product;7.506667
+2012;milkproducts;animalbased;dairy;253.412178
+2012;fats;animalbased;meat product;5.7975
+2013;grain;plantbased;carbohydrates;90.23286
+2013;potatoe;plantbased;carbohydrates;52.46591
+2013;starch;plantbased;carbohydrates;3.153483
+2013;sugar;plantbased;carbohydrates;41.695623
+2013;legume;plantbased;fruits and vegetables;0.931403
+2013;nuts;plantbased;oils and fats;8.199711
+2013;oilplants;plantbased;oils and fats;3.748557
+2013;vegetables;plantbased;fruits and vegetables;105.200513
+2013;fruits;plantbased;fruits and vegetables;119.244203
+2013;stimulants;plantbased;others;12.364101
+2013;spices;plantbased;others;0.648192
+2013;alcoholic beverages;plantbased;others;93.341325
+2013;oils, fats;plantbased;oils and fats;16.258062
+2013;others;plantbased;others;1.842894
+2013;meat;animalbased;meat product;50.541677
+2013;eggs;animalbased;dairy;11.625214
+2013;fish, shellfish;animalbased;meat product;8.038763
+2013;milkproducts;animalbased;dairy;257.230438
+2013;fats;animalbased;meat product;6.054418
+2014;grain;plantbased;carbohydrates;90.027135
+2014;potatoe;plantbased;carbohydrates;43.430768
+2014;starch;plantbased;carbohydrates;3.171274
+2014;sugar;plantbased;carbohydrates;39.077777
+2014;legume;plantbased;fruits and vegetables;0.986715
+2014;nuts;plantbased;oils and fats;8.262729
+2014;oilplants;plantbased;oils and fats;3.676812
+2014;vegetables;plantbased;fruits and vegetables;104.458797
+2014;fruits;plantbased;fruits and vegetables;114.924142
+2014;stimulants;plantbased;others;11.791218
+2014;spices;plantbased;others;0.717634
+2014;alcoholic beverages;plantbased;others;91.970419
+2014;oils, fats;plantbased;oils and fats;16.630264
+2014;others;plantbased;others;2.465723
+2014;meat;animalbased;meat product;50.680754
+2014;eggs;animalbased;dairy;11.759391
+2014;fish, shellfish;animalbased;meat product;7.674211
+2014;milkproducts;animalbased;dairy;253.765322
+2014;fats;animalbased;meat product;5.836533
+2015;grain;plantbased;carbohydrates;92.570062
+2015;potatoe;plantbased;carbohydrates;52.181408
+2015;starch;plantbased;carbohydrates;3.455159
+2015;sugar;plantbased;carbohydrates;39.576654
+2015;legume;plantbased;fruits and vegetables;1.133554
+2015;nuts;plantbased;oils and fats;8.029775
+2015;oilplants;plantbased;oils and fats;3.9623
+2015;vegetables;plantbased;fruits and vegetables;104.168504
+2015;fruits;plantbased;fruits and vegetables;115.048785
+2015;stimulants;plantbased;others;12.403538
+2015;spices;plantbased;others;0.69513
+2015;alcoholic beverages;plantbased;others;90.740517
+2015;oils, fats;plantbased;oils and fats;15.435807
+2015;others;plantbased;others;1.968041
+2015;meat;animalbased;meat product;49.827563
+2015;eggs;animalbased;dairy;11.898155
+2015;fish, shellfish;animalbased;meat product;7.77478
+2015;milkproducts;animalbased;dairy;252.089965
+2015;fats;animalbased;meat product;5.68875
+2016;grain;plantbased;carbohydrates;88.860962
+2016;potatoe;plantbased;carbohydrates;48.360191
+2016;starch;plantbased;carbohydrates;3.148693
+2016;sugar;plantbased;carbohydrates;37.914051
+2016;legume;plantbased;fruits and vegetables;1.062723
+2016;nuts;plantbased;oils and fats;8.054424
+2016;oilplants;plantbased;oils and fats;3.87934
+2016;vegetables;plantbased;fruits and vegetables;102.678964
+2016;fruits;plantbased;fruits and vegetables;115.817414
+2016;stimulants;plantbased;others;11.803722
+2016;spices;plantbased;others;0.66414
+2016;alcoholic beverages;plantbased;others;88.603276
+2016;oils, fats;plantbased;oils and fats;16.30235
+2016;others;plantbased;others;2.819141
+2016;meat;animalbased;meat product;49.227691
+2016;eggs;animalbased;dairy;11.932903
+2016;fish, shellfish;animalbased;meat product;7.848102
+2016;milkproducts;animalbased;dairy;246.617719
+2016;fats;animalbased;meat product;5.573953
+2017;grain;plantbased;carbohydrates;90.435371
+2017;potatoe;plantbased;carbohydrates;42.862596
+2017;starch;plantbased;carbohydrates;3.40953
+2017;sugar;plantbased;carbohydrates;40.807231
+2017;legume;plantbased;fruits and vegetables;1.233071
+2017;nuts;plantbased;oils and fats;8.369815
+2017;oilplants;plantbased;oils and fats;4.043011
+2017;vegetables;plantbased;fruits and vegetables;103.273315
+2017;fruits;plantbased;fruits and vegetables;114.965584
+2017;stimulants;plantbased;others;11.677441
+2017;spices;plantbased;others;0.79638
+2017;alcoholic beverages;plantbased;others;88.636726
+2017;oils, fats;plantbased;oils and fats;16.382124
+2017;others;plantbased;others;2.868536
+2017;meat;animalbased;meat product;48.721239
+2017;eggs;animalbased;dairy;12.082578
+2017;fish, shellfish;animalbased;meat product;7.499045
+2017;milkproducts;animalbased;dairy;243.685586
+2017;fats;animalbased;meat product;5.315955
+2018;grain;plantbased;carbohydrates;87.474532
+2018;potatoe;plantbased;carbohydrates;46.761904
+2018;starch;plantbased;carbohydrates;3.734591
+2018;sugar;plantbased;carbohydrates;34.25796
+2018;legume;plantbased;fruits and vegetables;1.150492
+2018;nuts;plantbased;oils and fats;8.573121
+2018;oilplants;plantbased;oils and fats;4.037582
+2018;vegetables;plantbased;fruits and vegetables;103.77971
+2018;fruits;plantbased;fruits and vegetables;109.323793
+2018;stimulants;plantbased;others;12.488329
+2018;spices;plantbased;others;0.994892
+2018;alcoholic beverages;plantbased;others;88.900219
+2018;oils, fats;plantbased;oils and fats;16.523023
+2018;others;plantbased;others;2.461267
+2018;meat;animalbased;meat product;48.440912
+2018;eggs;animalbased;dairy;12.203648
+2018;fish, shellfish;animalbased;meat product;7.493381
+2018;milkproducts;animalbased;dairy;240.599223
+2018;fats;animalbased;meat product;5.273689
+2019;grain;plantbased;carbohydrates;89.463362
+2019;potatoe;plantbased;carbohydrates;46.040031
+2019;starch;plantbased;carbohydrates;3.105467
+2019;sugar;plantbased;carbohydrates;35.495491
+2019;legume;plantbased;fruits and vegetables;1.137933
+2019;nuts;plantbased;oils and fats;8.560503
+2019;oilplants;plantbased;oils and fats;4.347139
+2019;vegetables;plantbased;fruits and vegetables;98.922452
+2019;fruits;plantbased;fruits and vegetables;112.000319
+2019;stimulants;plantbased;others;12.186539
+2019;spices;plantbased;others;1.10271
+2019;alcoholic beverages;plantbased;others;90.255633
+2019;oils, fats;plantbased;oils and fats;15.81909
+2019;others;plantbased;others;2.755201
+2019;meat;animalbased;meat product;47.653006
+2019;eggs;animalbased;dairy;12.420055
+2019;fish, shellfish;animalbased;meat product;7.31504
+2019;milkproducts;animalbased;dairy;234.849412
+2019;fats;animalbased;meat product;5.601634
+2020;grain;plantbased;carbohydrates;90.536958
+2020;potatoe;plantbased;carbohydrates;47.21456
+2020;starch;plantbased;carbohydrates;3.075991
+2020;sugar;plantbased;carbohydrates;36.475249
+2020;legume;plantbased;fruits and vegetables;1.563563
+2020;nuts;plantbased;oils and fats;8.807505
+2020;oilplants;plantbased;oils and fats;4.406939
+2020;vegetables;plantbased;fruits and vegetables;105.454995
+2020;fruits;plantbased;fruits and vegetables;115.264125
+2020;stimulants;plantbased;others;11.978032
+2020;spices;plantbased;others;1.326606
+2020;alcoholic beverages;plantbased;others;84.765442
+2020;oils, fats;plantbased;oils and fats;17.798555
+2020;others;plantbased;others;3.149177
+2020;meat;animalbased;meat product;47.357699
+2020;eggs;animalbased;dairy;12.901044
+2020;fish, shellfish;animalbased;meat product;7.595541
+2020;milkproducts;animalbased;dairy;238.643691
+2020;fats;animalbased;meat product;5.928728
