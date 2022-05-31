@@ -42,7 +42,7 @@ comp_meat = pd.DataFrame({
     "Others" : meat_cons.Total - (meat_cons.Cow + meat_cons.Veal + meat_cons.Pig + meat_cons.Chicken)
 })
 # Also remove a few entries
-#comp_meat_5 = comp_meat.query("Year%5==0")
+comp_meat_5 = comp_meat.query("Year%5==0")
 
 
 # filter organic farm to take only every 5th year
@@ -108,7 +108,7 @@ fig_line_org.update_yaxes(range=[0,50])
 mask = ft_per_pers.year.isin([2020])
 fig_sunburst = px.sunburst(
     ft_per_pers[mask], 
-    path=["Type","Food"], 
+    path=["Type","Sub_Type","Food"], 
     values="Amount", 
     color="Type",
     color_discrete_map={'(?)':'black', "plantbased":"green","animalbased":"red"}
@@ -116,9 +116,16 @@ fig_sunburst = px.sunburst(
 fig_sunburst.update_traces(insidetextorientation='radial')
 
 # ------- BAR CHART MEAT CONSUMPTION ---------
+color_map_bar = {
+    "Cow":"#199c61",
+    "Veal":"#5ae34d",
+    "Pig":"#c5e34d",
+    "Chicken":"#e3c04d",
+    "Others":"#e3734d"
+}
 
 fig_barchart = px.bar(
-    comp_meat, 
+    comp_meat_5, 
     x = "Year", 
     y = [
         "Cow", 
@@ -126,18 +133,31 @@ fig_barchart = px.bar(
         "Pig",
         "Chicken", 
         "Others"
-    ]
+    ],
+    color_discrete_map = color_map_bar
 )
 
 
 # ------ BUBBLE CHART ORGANIC FARMS
+color_map_bubble = {
+    "< 1 ha":"#199c61",
+    "1  - <   3 ha":"#5ae34d",
+    "3  - <   5 ha":"#c5e34d",
+    "5  - < 10 ha":"#e3c04d",
+    "10  - <  20 ha":"#e3734d",
+    "20  - <  30 ha":"#199c61",
+    "30  - < 50 ha":"#5ae34d",
+    "50  +  ha":"#c5e34d"
+}
+
 fig_bubble = px.scatter(
     org_farm_5, 
     x="Year", 
     y="Size",
 	size="Number",
     color="Size",
-    size_max = 40
+    size_max = 60,
+    color_discrete_map = color_map_bubble
 )
 
 
