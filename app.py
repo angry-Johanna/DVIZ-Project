@@ -176,9 +176,53 @@ app = dash.Dash(__name__)
 
 server = app.server
 
+# sidebar
+SIDEBAR_STYLE = {
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "16rem",
+    "padding": "2rem 1rem",
+    "background-color": "#FFFAF0",
+    "font-family": "Helvetica",
+    "outline": "none",
+    "text-decoration": "none",
+    "font-size": 13,
+}
+
+sidebar = html.Div(
+    [
+        html.H2("Table of contents", className="display-4"),
+        html.Hr(),
+        dbc.Nav(
+            [
+                dbc.NavLink("Intro", href="http://127.0.0.1:8050/buying_organic#intro", active="exact"),
+                html.Br(),
+                dbc.NavLink("Shopping organic groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact"),
+                html.Br(),
+                dbc.NavLink("Type of food consumed per person", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact"),
+                html.Br(),
+                dbc.NavLink("Meat Consumption per person and year", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact"),
+                html.Br(),
+                dbc.NavLink("Organic Farms Land usage", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact"),
+            ],
+            vertical=True,
+            pills=True,
+        ),
+    ],
+    style=SIDEBAR_STYLE,
+)
+
+# Table styling
 app.layout = html.Div([
     
     html.Div([
+        sidebar
+    ]),    
+    
+    html.Div([
+        html.P("", id="intro"),
         html.H1("How do the Swiss behave regarding grocerie shopping?"),
         html.P(text_2),
         html.P(text_2)
@@ -186,6 +230,7 @@ app.layout = html.Div([
     
     # Buying organic
     html.Div([
+        html.P("", id="buying_organic"),
         html.H2("Shopping organic groceries"),
         html.P(text_2),
         html.Br(), 
@@ -198,7 +243,8 @@ app.layout = html.Div([
     
     # sunburst
     html.Div([
-        html.H2('Type of food consumed per person'),
+        html.P("", id="sunburst"),
+        html.H2("Type of food consumed per person"),
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
@@ -208,6 +254,7 @@ app.layout = html.Div([
     
     # Meat Consumption
     html.Div([
+        html.P("", id="meat_consumption"),
         html.H2("Meat Consumption per person and year"),
         html.P(text_2),
         html.Br(), 
@@ -219,6 +266,7 @@ app.layout = html.Div([
     
     # Organic Farms
     html.Div([
+        html.P("", id="organic_farms"),
         html.H2("Organic Farms Land usage"),
         html.P(text_2),
         html.Br(), 
@@ -226,8 +274,15 @@ app.layout = html.Div([
         html.Br(),
         html.P(text_2),
         html.Br()
-    ])
+    ]),
     
+    # Source
+    html.Div([
+        html.H4("Sources:"),
+        html.P("https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html"),
+        html.H4("Masterminds behind this project:"),
+        html.P("Johanna Koch and Nadja Kaufmann, HSLU-I")
+    ])
 ])
 
 

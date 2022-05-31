@@ -1,5 +1,6 @@
 /* This is a single-line comment */
 body {
+  margin: 0;
   background-color:#FFFAF0;
   font-family: "Helvetica", sans-serif;
 }
@@ -24,6 +25,14 @@ p {
 }
 
 div {
-	margin-left: 3%;
+	margin-left: 4%;
 	margin-right: 3%;
 }
+
+    # Source
+    html.Div([
+        html.H3("Sources:"),
+        html.P("https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html"),
+        html.H3("Masterminds behind this Project:"),
+        html.P("Johanna Koch and Nadja Kaufmann, HSLU-I")
+    ]),
