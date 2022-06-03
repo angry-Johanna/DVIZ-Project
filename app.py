@@ -61,7 +61,7 @@ fig_line_org = go.Figure()
 KG_bio_comp_cat = KG_bio_comp.Category.drop_duplicates()
 
 # color_map to color lines
-color_map = {"Always":"#199c61","Often":"#5ae34d","Sometimes":"#c5e34d","Rarely":"#e3c04d","Never":"#e3734d"}
+color_map = {"Always":"#238443","Often":"#78c679","Sometimes":"#a6bddb","Rarely":"#3690c0","Never":"#045a8d"}
 
 # add lines for each category
 for index, value in KG_bio_comp_cat.items():
@@ -94,12 +94,12 @@ for index, value in KG_bio_comp_cat.items():
 fig_line_org.update_layout(
     title="Shopping organic",
     xaxis_title="Year",
-    yaxis_title="Percentage",
-    legend_title="Legend Title",
+    yaxis_title="Percentage [%]",
+    # legend_title="Legend Title",
     font=dict(
-        family="Courier New, monospace",
+        family="Helvetica, sans-serif",
         size=15,
-        color="RebeccaPurple"
+        color="black"
     )
 )
 fig_line_org.update_yaxes(range=[0,50])
@@ -111,7 +111,7 @@ fig_sunburst = px.sunburst(
     path=["Type","Sub_Type","Food"], 
     values="Amount", 
     color="Type",
-    color_discrete_map={'(?)':'black', "plantbased":"green","animalbased":"red"}
+    color_discrete_map={'(?)':'black', "plantbased":"#41ab5d", "animalbased":"#3690c0"}
 )
 fig_sunburst.update_traces(insidetextorientation='radial')
 
@@ -140,14 +140,14 @@ fig_barchart = px.bar(
 
 # ------ BUBBLE CHART ORGANIC FARMS
 color_map_bubble = {
-    "< 1 ha":"#199c61",
-    "1  - <   3 ha":"#5ae34d",
-    "3  - <   5 ha":"#c5e34d",
-    "5  - < 10 ha":"#e3c04d",
-    "10  - <  20 ha":"#e3734d",
-    "20  - <  30 ha":"#199c61",
-    "30  - < 50 ha":"#5ae34d",
-    "50  +  ha":"#c5e34d"
+    "< 1 ha":"#006837",
+    "1  - <   3 ha":"#41ab5d",
+    "3  - <   5 ha":"#addd8e",
+    "5  - < 10 ha":"#f7fcb9",
+    "10  - <  20 ha":"#d0d1e6",
+    "20  - <  30 ha":"#74a9cf",
+    "30  - < 50 ha":"#3690c0",
+    "50  +  ha":"#045a8d"
 }
 
 fig_bubble = px.scatter(
@@ -163,11 +163,16 @@ fig_bubble = px.scatter(
 
 
 # ---------- #
-# Text       #
+#    Text    #
 # ---------- #
 
 text_1 = lorem.text()
 text_2 = lorem.paragraph()
+
+text_intro = "With this data storytelling we want to figure out how the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? We want to get to the bottom of these questions and find possible answers through our visualisations."
+
+text_foodtype1 = "To get a good overview of the eating habits of the Swiss, let's look at the distribution of the different food-types in our daily diet. The graph below shows the annual amount of food consumed per person in kilograms."
+text_foodtype2 = "At first glance, our diet consists largely of plant-based foods. We mostly eat vegetables and fruits (222 kg/year), in addition to a large proportion of carbohydrates such as wheat and potatoes (177 kg/year). The main part of our animal diet consists of dairy products and less than a quarter is our meat consumption. Nevertheless, the consumption of meat (excluding fish) per person amounts to 47 kg per year. This corresponds to the weight of 31 chickens, eaten per person each year."
 
 # ---------- #
 # APP & HTML #
@@ -184,7 +189,7 @@ SIDEBAR_STYLE = {
     "bottom": 0,
     "width": "16rem",
     "padding": "2rem 1rem",
-    "background-color": "#FFFAF0",
+    "background-color": "#f2f2f2",
     "font-family": "Helvetica",
     "outline": "none",
     "text-decoration": "none",
@@ -223,9 +228,8 @@ app.layout = html.Div([
     
     html.Div([
         html.P("", id="intro"),
-        html.H1("How do the Swiss behave regarding grocerie shopping?"),
-        html.P(text_2),
-        html.P(text_2)
+        html.H1("Changes in the eating habits of the Swiss"),
+        html.P(text_intro),
     ]),
     
     # Buying organic
@@ -244,11 +248,11 @@ app.layout = html.Div([
     # sunburst
     html.Div([
         html.P("", id="sunburst"),
-        html.H2("Type of food consumed per person"),
-        html.P(text_2),
+        html.H2("Type of food consumed per person / per year"),
+        html.P(text_foodtype1),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
-        html.P(text_2),
+        html.P(text_foodtype2),
         html.Br(),
     ]),
     
