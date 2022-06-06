@@ -44,49 +44,86 @@ comp_meat = pd.DataFrame({
 # Also remove a few entries
 comp_meat_5 = comp_meat.query("Year%5==0")
 
+# ------- #
+# COLORS  #
+# ------- #
 
-
-
+paper_bgcolor = "#f2f2f2"
+plot_bgcolor = '#DCDCDC'
 
 # ------- #
 # FIGURES #
 # ------- #
 
 # ------- LINE CHART ORGANIC ---------
+# Group some Categories together for better readability
+grouped_line = pd.DataFrame({'Year':[],'Category':[],'Frau':[],'Mann':[]})
+
+# filter years for unique values
+year = KG_bio_comp['Year'].drop_duplicates()
+
+# Create new dataframe with the new grouped categories
+for y in year:
+    # Category for "Always or often" buying organic
+    query_1 = "Year=="+ str(y) + "and (Category=='Always' or Category=='Often')"
+    frau_1 = KG_bio_comp.query(query_1).sum().Frau
+    mann_1 = KG_bio_comp.query(query_1).sum().Mann
+    tmp_1 = pd.DataFrame({'Year':[y],'Category':["Always or often"],'Frau':[frau_1],'Mann':[mann_1]})
+    grouped_line = pd.concat([grouped_line,  tmp_1], ignore_index=True)
+    
+    # Category for "Sometimes" buying organic
+    query_2 = "Year=="+ str(y) + "and Category=='Sometimes'"
+    frau_2 = KG_bio_comp.query(query_2).sum().Frau
+    mann_2 = KG_bio_comp.query(query_2).sum().Mann
+    tmp_2 = pd.DataFrame({'Year':[y],'Category':["Sometimes"],'Frau':[frau_2],'Mann':[mann_2]})
+    grouped_line = pd.concat([grouped_line,  tmp_2], ignore_index=True)
+
+    # Category for "Rarely or never" buying organic
+    query_3 = "Year=="+ str(y) + "and (Category=='Rarely' or Category=='Never')"
+    frau_3 = KG_bio_comp.query(query_3).sum().Frau
+    mann_3 = KG_bio_comp.query(query_3).sum().Mann
+    tmp_3 = pd.DataFrame({'Year':[y],'Category':["Rarely or never"],'Frau':[frau_3],'Mann':[mann_3]})
+    grouped_line = pd.concat([grouped_line,  tmp_3], ignore_index=True)
+
+
 # initial chart
 fig_line_org = go.Figure()
 
 # drop duplicates from category
-KG_bio_comp_cat = KG_bio_comp.Category.drop_duplicates()
+KG_bio_comp_cat = grouped_line.Category.drop_duplicates()
 
 # color_map to color lines
-color_map = {"Always":"#238443","Often":"#78c679","Sometimes":"#a6bddb","Rarely":"#3690c0","Never":"#045a8d"}
+color_map_line = {
+    "Always or often":"#238443",
+    "Sometimes":"#78c679",
+    "Rarely or never":"#045a8d"
+}
 
 # add lines for each category
 for index, value in KG_bio_comp_cat.items():
     # mask to draw a line for each category individually
-    mask = KG_bio_comp.Category.isin([value])
+    mask = grouped_line.Category.isin([value])
     # create names for lines
     name_men = "Men buying "+value.lower()+" organic"
     name_women = "Women buying "+value.lower()+" organic"
     # add line for men
     fig_line_org.add_trace(go.Scatter(
-    x=KG_bio_comp[mask].Year, 
-    y=KG_bio_comp[mask].Mann,
+    x=grouped_line[mask].Year, 
+    y=grouped_line[mask].Mann,
     name = name_men,
     mode = 'lines',
     text = value,
-    marker = {'color' : color_map[value]},
+    marker = {'color' : color_map_line[value]},
     line = {'dash': 'dot'}
     ))
     # add line for women
     fig_line_org.add_trace(go.Scatter(
-    x=KG_bio_comp[mask].Year, 
-    y=KG_bio_comp[mask].Frau,
+    x=grouped_line[mask].Year, 
+    y=grouped_line[mask].Frau,
     name = name_women,
     mode = 'lines',
     text = value,
-    marker = {'color' : color_map[value]}
+    marker = {'color' : color_map_line[value]}
     ))
 
 # make it pretty
@@ -101,7 +138,10 @@ fig_line_org.update_layout(
         color="black"
     )
 )
-fig_line_org.update_yaxes(range=[0,50])
+
+fig_line_org.layout.paper_bgcolor = paper_bgcolor
+fig_line_org.layout.plot_bgcolor = plot_bgcolor
+#fig_line_org.update_yaxes(range=[0,70])
 
 # ------- SUNBURST FOODTYPE CONSUMPTION ------
 mask = ft_per_pers.year.isin([2020])
@@ -113,6 +153,8 @@ fig_sunburst = px.sunburst(
     color_discrete_map={'(?)':'black', "plantbased":"#41ab5d", "animalbased":"#3690c0"}
 )
 fig_sunburst.update_traces(insidetextorientation='radial')
+fig_sunburst.layout.paper_bgcolor = paper_bgcolor
+fig_sunburst.layout.plot_bgcolor = plot_bgcolor
 
 # ------- BAR CHART MEAT CONSUMPTION ---------
 color_map_bar = {
@@ -135,6 +177,8 @@ fig_barchart = px.bar(
     ],
     color_discrete_map = color_map_bar
 )
+fig_barchart.layout.paper_bgcolor = paper_bgcolor
+fig_barchart.layout.plot_bgcolor = plot_bgcolor
 
 
 # ------ BUBBLE CHART ORGANIC FARMS
@@ -170,7 +214,7 @@ for y in year:
 color_map_bubble = {
     "Up to 10 hectare":"#addd8e",
     "Up to 50 hectare":"#f7fcb9",
-    "Over 50 hectare":"#d0d1e6"
+    "Over 50 hectare":"#74a9cf"
 }
 
 fig_bubble = px.scatter(
@@ -183,7 +227,8 @@ fig_bubble = px.scatter(
     color_discrete_map = color_map_bubble
 )
 
-
+fig_bubble.layout.paper_bgcolor = paper_bgcolor
+fig_bubble.layout.plot_bgcolor = plot_bgcolor
 
 # ---------- #
 #    Text    #
@@ -331,6 +376,9 @@ color_map_bubble_old = {
     "30  - < 50 ha":"#3690c0",
     "50  +  ha":"#045a8d"
 }
+
+# colormap for line chart
+color_map_line_old = {"Always":"#238443","Often":"#78c679","Sometimes":"#a6bddb","Rarely":"#3690c0","Never":"#045a8d"}
 
 
 if __name__ == '__main__':
