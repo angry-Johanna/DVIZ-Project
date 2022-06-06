@@ -28,26 +28,12 @@ meat_cons = pd.read_csv(path + "csv_Fleischbilanz_Verbr_pro_Pers_barchart.csv",s
 # import organic farms
 org_farm = pd.read_csv(path + "csv_Biologischer_Landbau_bubble.csv",sep=";")
 
-# ---- #
-# DATA #
-# ---- #
-
-# format meat consumption for barchart
-comp_meat = pd.DataFrame({
-    "Year": meat_cons.Year,     
-    "Cow": meat_cons.Cow, 
-    "Veal":meat_cons.Veal, 
-    "Pig":meat_cons.Pig, 
-    "Chicken":meat_cons.Chicken,
-    "Others" : meat_cons.Total - (meat_cons.Cow + meat_cons.Veal + meat_cons.Pig + meat_cons.Chicken)
-})
-# Also remove a few entries
-comp_meat_5 = comp_meat.query("Year%5==0")
 
 # ------- #
 # COLORS  #
 # ------- #
 
+# Colors for Chart Backgrounds
 paper_bgcolor = "#f2f2f2"
 plot_bgcolor = '#DCDCDC'
 
@@ -55,7 +41,10 @@ plot_bgcolor = '#DCDCDC'
 # FIGURES #
 # ------- #
 
-# ------- LINE CHART ORGANIC ---------
+#-------------------------------------#
+# ------- LINE CHART ORGANIC ---------#
+#-------------------------------------#
+
 # Group some Categories together for better readability
 grouped_line = pd.DataFrame({'Year':[],'Category':[],'Frau':[],'Mann':[]})
 
@@ -143,7 +132,11 @@ fig_line_org.layout.paper_bgcolor = paper_bgcolor
 fig_line_org.layout.plot_bgcolor = plot_bgcolor
 #fig_line_org.update_yaxes(range=[0,70])
 
-# ------- SUNBURST FOODTYPE CONSUMPTION ------
+
+#---------------------------------------------#
+# ------- SUNBURST FOODTYPE CONSUMPTION ------#
+#---------------------------------------------#
+
 mask = ft_per_pers.year.isin([2020])
 fig_sunburst = px.sunburst(
     ft_per_pers[mask], 
@@ -156,7 +149,23 @@ fig_sunburst.update_traces(insidetextorientation='radial')
 fig_sunburst.layout.paper_bgcolor = paper_bgcolor
 fig_sunburst.layout.plot_bgcolor = plot_bgcolor
 
-# ------- BAR CHART MEAT CONSUMPTION ---------
+
+#---------------------------------------------#
+# ------- BAR CHART MEAT CONSUMPTION ---------#
+#---------------------------------------------#
+
+# format meat consumption for barchart
+comp_meat = pd.DataFrame({
+    "Year": meat_cons.Year,     
+    "Cow": meat_cons.Cow, 
+    "Veal":meat_cons.Veal, 
+    "Pig":meat_cons.Pig, 
+    "Chicken":meat_cons.Chicken,
+    "Others" : meat_cons.Total - (meat_cons.Cow + meat_cons.Veal + meat_cons.Pig + meat_cons.Chicken)
+})
+# Also remove a few entries
+comp_meat_5 = comp_meat.query("Year%5==0")
+
 color_map_bar = {
     "Cow":"#199c61",
     "Veal":"#5ae34d",
@@ -181,7 +190,11 @@ fig_barchart.layout.paper_bgcolor = paper_bgcolor
 fig_barchart.layout.plot_bgcolor = plot_bgcolor
 
 
-# ------ BUBBLE CHART ORGANIC FARMS
+
+
+#-----------------------------------------#
+# ------ BUBBLE CHART ORGANIC FARMS ------#
+#-----------------------------------------#
 
 # filter organic farm to take only every 5th year
 org_farm_5 = org_farm.query("Year%5==0")
