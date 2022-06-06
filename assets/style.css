@@ -33,4 +33,21 @@ div {
 	text-decoration: none;
 }
 
-	
+.navlink {
+    text-decoration: none;
+}
+
+/* unvisited link */
+.navlink:link {
+  color: #006837;
+}
+
+/* visited link */
+.navlink:visited {
+  color: #006837;
+}
+
+/* mouse over link */
+.navlink:hover {
+  color: #3690c0;
+}

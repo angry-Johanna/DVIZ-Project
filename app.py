@@ -101,7 +101,7 @@ for index, value in KG_bio_comp_cat.items():
     x=grouped_line[mask].Year, 
     y=grouped_line[mask].Mann,
     name = name_men,
-    mode = 'lines',
+    #mode = 'lines',
     text = value,
     marker = {'color' : color_map_line[value]},
     line = {'dash': 'dot'}
@@ -111,7 +111,7 @@ for index, value in KG_bio_comp_cat.items():
     x=grouped_line[mask].Year, 
     y=grouped_line[mask].Frau,
     name = name_women,
-    mode = 'lines',
+    #mode = 'lines',
     text = value,
     marker = {'color' : color_map_line[value]}
     ))
@@ -146,10 +146,20 @@ fig_sunburst = px.sunburst(
     color="Type",
     color_discrete_map={'(?)':'black', "plantbased":"#41ab5d", "animalbased":"#3690c0"}
 )
+
 fig_sunburst.update_traces(insidetextorientation='radial')
 fig_sunburst.layout.paper_bgcolor = paper_bgcolor
 fig_sunburst.layout.plot_bgcolor = plot_bgcolor
 
+fig_sunburst.update_layout(
+    height=600,
+    title_text="Different types of food consumed",
+    font=dict(
+        family="Helvetica, sans-serif",
+        size=15,
+        color="black"
+    )
+)
 
 #---------------------------------------------#
 # ------- BAR CHART MEAT CONSUMPTION ---------#
@@ -218,7 +228,16 @@ fig_barchart.add_trace(
     row=1, col=2
 )
 
-fig_barchart.update_layout(showlegend=False, height=600)
+fig_barchart.update_layout(
+    showlegend=False, 
+    height=600, 
+    title_text="Meat Consumption per Person per Year",
+    font=dict(
+        family="Helvetica, sans-serif",
+        size=15,
+        color="black"
+    )
+)
 
 # Pig
 fig_barchart.update_yaxes(range=[0, 35], row=2, col=2)
@@ -252,26 +271,26 @@ for y in year:
     # Create new size "Up to 10 hectare"
     query_1 = "Year==" + str(y) + " and (Size=='< 1 ha' or Size=='1  - <   3 ha' or Size=='3  - <   5 ha' or Size=='5  - < 10 ha')"
     count_size_1 = org_farm_5.query(query_1).sum().Number
-    tmp_1 = pd.DataFrame({'Year':[y],'Size':["Up to 10 hectare"],'Count':[count_size_1]})
+    tmp_1 = pd.DataFrame({'Year':[y],'Size':["Up to 10 hectares"],'Count':[count_size_1]})
     grouped_bub = pd.concat([grouped_bub,  tmp_1], ignore_index=True)
     
     # Create new size "Up to 50 hectare"
     query_2 = "Year==" + str(y) + " and (Size=='10  - <  20 ha' or Size=='20  - <  30 ha' or Size=='30  - < 50 ha')"
     count_size_2 = org_farm_5.query(query_2).sum().Number
-    tmp_2 = pd.DataFrame({'Year':[y],'Size':["Up to 50 hectare"],'Count':[count_size_2]})
+    tmp_2 = pd.DataFrame({'Year':[y],'Size':["Up to 50 hectares"],'Count':[count_size_2]})
     grouped_bub = pd.concat([grouped_bub,  tmp_2], ignore_index=True)
     
     # Create new size "50+ hectare"
     query_3 = "Year==" + str(y) + " and (Size=='50  +  ha')"
     count_size_3 = org_farm_5.query(query_3).sum().Number
-    tmp_3 = pd.DataFrame({'Year':[y],'Size':["Over 50 hectare"],'Count':[count_size_3]})
+    tmp_3 = pd.DataFrame({'Year':[y],'Size':["Over 50 hectares"],'Count':[count_size_3]})
     grouped_bub = pd.concat([grouped_bub,  tmp_3], ignore_index=True)
 
 # keep nice colormap for maybe later reference
 color_map_bubble = {
-    "Up to 10 hectare":"#addd8e",
-    "Up to 50 hectare":"#f7fcb9",
-    "Over 50 hectare":"#74a9cf"
+    "Up to 10 hectares":"#addd8e",
+    "Up to 50 hectares":"#f7fcb9",
+    "Over 50 hectares":"#74a9cf"
 }
 
 fig_bubble = px.scatter(
@@ -283,6 +302,17 @@ fig_bubble = px.scatter(
     size_max = 100,
     color_discrete_map = color_map_bubble
 )
+
+fig_bubble.update_layout(
+    showlegend=False, 
+    title_text="Land usage of organic farms",
+    font=dict(
+        family="Helvetica, sans-serif",
+        size=15,
+        color="black"
+    )
+)
+
 
 fig_bubble.layout.paper_bgcolor = paper_bgcolor
 fig_bubble.layout.plot_bgcolor = plot_bgcolor
