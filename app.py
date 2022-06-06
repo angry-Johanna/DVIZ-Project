@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
+from plotly.subplots import make_subplots
 import lorem
 
 # ----------- #
@@ -166,26 +167,69 @@ comp_meat = pd.DataFrame({
 # Also remove a few entries
 comp_meat_5 = comp_meat.query("Year%5==0")
 
-color_map_bar = {
-    "Cow":"#199c61",
-    "Veal":"#5ae34d",
-    "Pig":"#c5e34d",
-    "Chicken":"#e3c04d",
-    "Others":"#e3734d"
-}
 
-fig_barchart = px.bar(
-    comp_meat_5, 
-    x = "Year", 
-    y = [
-        "Cow", 
-        "Veal", 
-        "Pig",
-        "Chicken", 
-        "Others"
-    ],
-    color_discrete_map = color_map_bar
+fig_barchart = make_subplots(
+    rows=3, 
+    cols=2, 
+    specs=[ [{}, {"rowspan": 3}],
+            [{}, None],
+            [{}, None]
+            ],
+    subplot_titles=("Cow", "Pig", "Veal", "Chicken")
 )
+
+fig_barchart.add_trace(
+    go.Bar(
+        x=comp_meat_5["Year"], 
+        y=comp_meat_5["Cow"],
+        name = "Cow",
+        marker = {'color' : "#41ab5d"}
+    ),
+    row=1, col=1
+)
+
+fig_barchart.add_trace(
+    go.Bar(
+        x=comp_meat_5["Year"], 
+        y=comp_meat_5["Veal"],
+        name = "Veal",
+        marker = {'color' : "#f7fcb9"}
+    ),
+    row=2, col=1
+)
+
+fig_barchart.add_trace(
+    go.Bar(
+        x=comp_meat_5["Year"], 
+        y=comp_meat_5["Chicken"],
+        name = "Chicken",
+        marker = {'color' : "#74a9cf"}
+    ),
+    row=3, col=1
+)
+
+fig_barchart.add_trace(
+    go.Bar(
+        x=comp_meat_5["Year"], 
+        y=comp_meat_5["Pig"],
+        name = "Pig",
+        marker = {'color' : "#045a8d"}
+    ),
+    row=1, col=2
+)
+
+fig_barchart.update_layout(showlegend=False, height=600)
+
+# Pig
+fig_barchart.update_yaxes(range=[0, 35], row=2, col=2)
+# Cow
+fig_barchart.update_yaxes(range=[0, 13], row=1, col=1)
+# Veal
+fig_barchart.update_yaxes(range=[0, 4], row=2, col=1)
+# Chicken
+fig_barchart.update_yaxes(range=[0, 13], row=3, col=1)
+
+
 fig_barchart.layout.paper_bgcolor = paper_bgcolor
 fig_barchart.layout.plot_bgcolor = plot_bgcolor
 
@@ -283,15 +327,11 @@ sidebar = html.Div(
         html.Hr(),
         dbc.Nav(
             [
-                dbc.NavLink("Intro", href="http://127.0.0.1:8050/buying_organic#intro", active="exact"),
-                html.Br(),
-                dbc.NavLink("Shopping organic groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact"),
-                html.Br(),
-                dbc.NavLink("Type of food consumed per person", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact"),
-                html.Br(),
-                dbc.NavLink("Meat Consumption per person and year", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact"),
-                html.Br(),
-                dbc.NavLink("Organic Farms Land usage", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact"),
+                dbc.NavItem(dbc.NavLink("Intro", href="http://127.0.0.1:8050/buying_organic#intro", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Shopping organic groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Type of food consumed per person", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Meat Consumption per person and year", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Organic Farms Land usage", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
             ],
             vertical=True,
             pills=True,
@@ -366,7 +406,7 @@ app.layout = html.Div([
     html.Div([
         html.H4("Sources:"),
         html.P("https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html"),
-        html.H4("Masterminds behind this project:"),
+        html.H4("Masterminds behind this project: 😎"),
         html.P("Johanna Koch and Nadja Kaufmann, HSLU-I")
     ])
 ])
