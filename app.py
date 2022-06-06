@@ -45,8 +45,7 @@ comp_meat = pd.DataFrame({
 comp_meat_5 = comp_meat.query("Year%5==0")
 
 
-# filter organic farm to take only every 5th year
-org_farm_5 = org_farm.query("Year%5==0")
+
 
 
 # ------- #
@@ -139,24 +138,48 @@ fig_barchart = px.bar(
 
 
 # ------ BUBBLE CHART ORGANIC FARMS
+
+# filter organic farm to take only every 5th year
+org_farm_5 = org_farm.query("Year%5==0")
+
+# filter those years to unique values
+year = org_farm_5['Year'].drop_duplicates()
+
+# Group some farm-sizes together for better readability
+grouped_bub = pd.DataFrame({'Year':[],'Size':[],'Count':[]})
+for y in year:
+    # Create new size "Up to 10 hectare"
+    query_1 = "Year==" + str(y) + " and (Size=='< 1 ha' or Size=='1  - <   3 ha' or Size=='3  - <   5 ha' or Size=='5  - < 10 ha')"
+    count_size_1 = org_farm_5.query(query_1).sum().Number
+    tmp_1 = pd.DataFrame({'Year':[y],'Size':["Up to 10 hectare"],'Count':[count_size_1]})
+    grouped_bub = pd.concat([grouped_bub,  tmp_1], ignore_index=True)
+    
+    # Create new size "Up to 50 hectare"
+    query_2 = "Year==" + str(y) + " and (Size=='10  - <  20 ha' or Size=='20  - <  30 ha' or Size=='30  - < 50 ha')"
+    count_size_2 = org_farm_5.query(query_2).sum().Number
+    tmp_2 = pd.DataFrame({'Year':[y],'Size':["Up to 50 hectare"],'Count':[count_size_2]})
+    grouped_bub = pd.concat([grouped_bub,  tmp_2], ignore_index=True)
+    
+    # Create new size "50+ hectare"
+    query_3 = "Year==" + str(y) + " and (Size=='50  +  ha')"
+    count_size_3 = org_farm_5.query(query_3).sum().Number
+    tmp_3 = pd.DataFrame({'Year':[y],'Size':["Over 50 hectare"],'Count':[count_size_3]})
+    grouped_bub = pd.concat([grouped_bub,  tmp_3], ignore_index=True)
+
+# keep nice colormap for maybe later reference
 color_map_bubble = {
-    "< 1 ha":"#006837",
-    "1  - <   3 ha":"#41ab5d",
-    "3  - <   5 ha":"#addd8e",
-    "5  - < 10 ha":"#f7fcb9",
-    "10  - <  20 ha":"#d0d1e6",
-    "20  - <  30 ha":"#74a9cf",
-    "30  - < 50 ha":"#3690c0",
-    "50  +  ha":"#045a8d"
+    "Up to 10 hectare":"#addd8e",
+    "Up to 50 hectare":"#f7fcb9",
+    "Over 50 hectare":"#d0d1e6"
 }
 
 fig_bubble = px.scatter(
-    org_farm_5, 
+    grouped_bub, 
     x="Year", 
     y="Size",
-	size="Number",
+	size="Count",
     color="Size",
-    size_max = 60,
+    size_max = 100,
     color_discrete_map = color_map_bubble
 )
 
@@ -232,19 +255,6 @@ app.layout = html.Div([
         html.P(text_intro),
     ]),
     
-    # Buying organic
-    html.Div([
-        html.P("", id="buying_organic"),
-        html.H2("Shopping organic groceries"),
-        html.P(text_2),
-        html.Br(), 
-        dcc.Graph(figure=fig_line_org),
-        html.Br(),
-        html.P(text_2),
-        html.Br()
-    ]),
-    
-    
     # sunburst
     html.Div([
         html.P("", id="sunburst"),
@@ -268,6 +278,20 @@ app.layout = html.Div([
         html.Br()
     ]),
     
+    
+    # Buying organic
+    html.Div([
+        html.P("", id="buying_organic"),
+        html.H2("Shopping organic groceries"),
+        html.P(text_2),
+        html.Br(), 
+        dcc.Graph(figure=fig_line_org),
+        html.Br(),
+        html.P(text_2),
+        html.Br()
+    ]),
+    
+ 
     # Organic Farms
     html.Div([
         html.P("", id="organic_farms"),
@@ -295,6 +319,18 @@ app.layout = html.Div([
 # CALLBACKS #
 # --------- #
 
+# Delete later
+# keep nice colormap for maybe later reference
+color_map_bubble_old = {
+    "< 1 ha":"#006837",
+    "1  - <   3 ha":"#41ab5d",
+    "3  - <   5 ha":"#addd8e",
+    "5  - < 10 ha":"#f7fcb9",
+    "10  - <  20 ha":"#d0d1e6",
+    "20  - <  30 ha":"#74a9cf",
+    "30  - < 50 ha":"#3690c0",
+    "50  +  ha":"#045a8d"
+}
 
 
 if __name__ == '__main__':
