@@ -390,6 +390,7 @@ app.layout = html.Div([
         html.P(text_foodtype1),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
+        html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.20904914.html"),
         html.P(text_foodtype2),
         html.Br(),
     ]),
@@ -401,6 +402,7 @@ app.layout = html.Div([
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_barchart),
+        html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.20904916.html"),
         html.Br(),
         html.P(text_2),
         html.Br()
@@ -414,6 +416,7 @@ app.layout = html.Div([
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_line_org),
+        html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.11708774.html"),
         html.Br(),
         html.P(text_2),
         html.Br()
@@ -427,6 +430,7 @@ app.layout = html.Div([
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_bubble),
+        html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.17064714.html"),
         html.Br(),
         html.P(text_2),
         html.Br()
