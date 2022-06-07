@@ -353,15 +353,15 @@ SIDEBAR_STYLE = {
 
 sidebar = html.Div(
     [
-        html.H2("Table of contents", className="display-4"),
+        html.H2("Table of Contents", className="display-4"),
         html.Hr(),
         dbc.Nav(
             [
                 dbc.NavItem(dbc.NavLink("Intro", href="http://127.0.0.1:8050/buying_organic#intro", active="exact", class_name="navlink")),
-                dbc.NavItem(dbc.NavLink("Shopping organic groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
-                dbc.NavItem(dbc.NavLink("Type of food consumed per person", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact", class_name="navlink")),
-                dbc.NavItem(dbc.NavLink("Meat Consumption per person and year", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
-                dbc.NavItem(dbc.NavLink("Organic Farms Land usage", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Type of Food Consumed", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Meat Consumption", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Shopping Organic Groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Land Usage of Organic Farms", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
             ],
             vertical=True,
             pills=True,
@@ -379,14 +379,14 @@ app.layout = html.Div([
     
     html.Div([
         html.P("", id="intro"),
-        html.H1("Changes in the eating habits of the Swiss"),
+        html.H1("Changes in the Eating Habits of the Swiss"),
         html.P(text_intro),
     ]),
     
     # sunburst
     html.Div([
         html.P("", id="sunburst"),
-        html.H2("Type of food consumed per person / per year"),
+        html.H2("Type of Food Consumed"),
         html.P(text_foodtype1),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
@@ -398,7 +398,7 @@ app.layout = html.Div([
     # Meat Consumption
     html.Div([
         html.P("", id="meat_consumption"),
-        html.H2("Meat Consumption per person and year"),
+        html.H2("Meat Consumption"),
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_barchart),
@@ -412,7 +412,7 @@ app.layout = html.Div([
     # Buying organic
     html.Div([
         html.P("", id="buying_organic"),
-        html.H2("Shopping organic groceries"),
+        html.H2("Shopping Organic Groceries"),
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_line_org),
@@ -426,7 +426,7 @@ app.layout = html.Div([
     # Organic Farms
     html.Div([
         html.P("", id="organic_farms"),
-        html.H2("Organic Farms Land usage"),
+        html.H2("Land Usage of Organic Farms"),
         html.P(text_2),
         html.Br(), 
         dcc.Graph(figure=fig_bubble),
