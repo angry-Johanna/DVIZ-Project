@@ -84,9 +84,9 @@ KG_bio_comp_cat = grouped_line.Category.drop_duplicates()
 
 # color_map to color lines
 color_map_line = {
-    "Always or often":"#238443",
+    "Always or often":"#006837",
     "Sometimes":"#78c679",
-    "Rarely or never":"#045a8d"
+    "Rarely or never":"#3690c0"
 }
 
 # add lines for each category
@@ -118,7 +118,7 @@ for index, value in KG_bio_comp_cat.items():
 
 # make it pretty
 fig_line_org.update_layout(
-    title="Shopping organic",
+    title="Shopping Organic",
     xaxis_title="Year",
     yaxis_title="Percentage [%]",
     # legend_title="Legend Title",
@@ -153,7 +153,7 @@ fig_sunburst.layout.plot_bgcolor = plot_bgcolor
 
 fig_sunburst.update_layout(
     height=600,
-    title_text="Different types of food consumed",
+    title_text="Different Types of Food Consumed 2020 [in kg]",
     font=dict(
         family="Helvetica, sans-serif",
         size=15,
@@ -185,7 +185,7 @@ fig_barchart = make_subplots(
             [{}, None],
             [{}, None]
             ],
-    subplot_titles=("Cow", "Pig", "Veal", "Chicken")
+    subplot_titles=("Cow Consumption", "Pig Consumption", "Veal Consumption", "Chicken Consumption")
 )
 
 fig_barchart.add_trace(
@@ -231,7 +231,7 @@ fig_barchart.add_trace(
 fig_barchart.update_layout(
     showlegend=False, 
     height=600, 
-    title_text="Meat Consumption per Person per Year",
+    title_text="Meat Consumption per Person per Year [in kg]",
     font=dict(
         family="Helvetica, sans-serif",
         size=15,
@@ -305,7 +305,7 @@ fig_bubble = px.scatter(
 
 fig_bubble.update_layout(
     showlegend=False, 
-    title_text="Land usage of organic farms",
+    title_text="Land Usage of Organic Farms",
     font=dict(
         family="Helvetica, sans-serif",
         size=15,
@@ -324,7 +324,7 @@ fig_bubble.layout.plot_bgcolor = plot_bgcolor
 text_1 = lorem.text()
 text_2 = lorem.paragraph()
 
-text_intro = "With this data storytelling we want to figure out how the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? We want to get to the bottom of these questions and find possible answers through our visualisations."
+text_intro = "With this data storytelling we want to figure out how the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? \nWe want to get to the essence of these questions and find possible answers through our visualisations."
 
 text_foodtype1 = "To get a good overview of the eating habits of the Swiss, let's look at the distribution of the different food-types in our daily diet. The graph below shows the annual amount of food consumed per person in kilograms."
 text_foodtype2 = "At first glance, our diet consists largely of plant-based foods. We mostly eat vegetables and fruits (222 kg/year), in addition to a large proportion of carbohydrates such as wheat and potatoes (177 kg/year). The main part of our animal diet consists of dairy products and less than a quarter is our meat consumption. Nevertheless, the consumption of meat (excluding fish) per person amounts to 47 kg per year. This corresponds to the weight of 31 chickens, eaten per person each year."
@@ -348,7 +348,7 @@ SIDEBAR_STYLE = {
     "font-family": "Helvetica",
     "outline": "none",
     "text-decoration": "none",
-    "font-size": 13,
+    "font-size": 15,
 }
 
 sidebar = html.Div(
@@ -362,6 +362,7 @@ sidebar = html.Div(
                 dbc.NavItem(dbc.NavLink("Meat Consumption", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
                 dbc.NavItem(dbc.NavLink("Shopping Organic Groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
                 dbc.NavItem(dbc.NavLink("Land Usage of Organic Farms", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Summary", href="http://127.0.0.1:8050/buying_organic#summary", active="exact", class_name="navlink")),
             ],
             vertical=True,
             pills=True,
@@ -386,7 +387,7 @@ app.layout = html.Div([
     # sunburst
     html.Div([
         html.P("", id="sunburst"),
-        html.H2("Type of Food Consumed"),
+        html.H2("Type of Food Consumed in 2020"),
         html.P(text_foodtype1),
         html.Br(), 
         dcc.Graph(figure=fig_sunburst),
@@ -436,12 +437,17 @@ app.layout = html.Div([
         html.Br()
     ]),
     
+    html.Div([
+        html.P("", id="summary"),
+        html.H2("Summary"),
+        html.P(text_2),
+    ]),
+    
     # Source
     html.Div([
-        html.H4("Sources:"),
-        html.P("https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html"),
-        html.H4("Masterminds behind this project: 😎"),
-        html.P("Johanna Koch and Nadja Kaufmann, HSLU-I")
+        #html.H4("Sources:"),
+        #html.P("https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html"),
+        html.Footer("Masterminds behind this project: Johanna Koch and Nadja Kaufmann, AI & ML student at HSLU-I 😎")
     ])
 ])
 
