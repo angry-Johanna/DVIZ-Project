@@ -324,10 +324,21 @@ fig_bubble.layout.plot_bgcolor = plot_bgcolor
 text_1 = lorem.text()
 text_2 = lorem.paragraph()
 
-text_intro = "With this data storytelling we want to figure out how the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? \nWe want to get to the essence of these questions and find possible answers through our visualisations."
+text_intro = "With this data storytelling we want to figure out what the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? We want to get to the essence of these questions and find possible answers through our visualisations."
 
 text_foodtype1 = "To get a good overview of the eating habits of the Swiss, let's look at the distribution of the different food-types in our daily diet. The graph below shows the annual amount of food consumed per person in kilograms."
-text_foodtype2 = "At first glance, our diet consists largely of plant-based foods. We mostly eat vegetables and fruits (222 kg/year), in addition to a large proportion of carbohydrates such as wheat and potatoes (177 kg/year). The main part of our animal diet consists of dairy products and less than a quarter is our meat consumption. Nevertheless, the consumption of meat (excluding fish) per person amounts to 47 kg per year. This corresponds to the weight of 31 chickens, eaten per person each year."
+text_foodtype2 = "At first glance, our diet consists largely of plant-based foods. We mostly eat vegetables and fruits (222 kg/year), in addition to a large proportion of carbohydrates such as wheat and potatoes (177 kg/year). The main part of our animal diet consists of dairy products and less than a quarter is our meat consumption. Nevertheless, the consumption of meat (excluding fish) per person amounts to 47 kg per year. This corresponds to the weight of 31 chickens, eaten per person each year – in our opinion way too much, as meat is mainly responsible for rising CO2 emissions."
+
+text_meat1 = "As we have seen from the previous presentation, the Swiss still eat a lot of meat. But what exactly is the composition of this meat consumption? From which animals do we eat how much? And has there been a change in consumption among the individual animal species? Let’s have a look at it…"
+text_meat2 = "There have been different developments over the years for the different animal species. The consumption of veal and pig has decreased considerably. Especially in the case of veal, consumption has shrunk from 3.3 kg per person / per year to 2 kg. A totally different behaviour can be observed with cow and chicken. Here, consumption has steadily increased and is currently at its highest level since 2000. An explanation for this different development is not trivial and cannot be answered based on the data analysis. Nevertheless, the overall decrease in meat consumption is more significant than the increase in the consumption of cow and chicken. This could indeed be related to people's attitudes towards climate change and the importance of animal welfare, which is not given by factory farming. However, it cannot be clearly clarified based on our visualisation but we’re happy to see that at least a little less meat is eaten."
+
+text_organic1 = "Since there is a visible change in meat consumption, we asked ourselves whether the Swiss also attach more importance to organic quality in food or if this has become more important for them. We were particularly interested in the difference between the sexes. Do more women or more men buy organic products? And how has this changed in recent years?"
+text_organic2 = "At first glance, it is immediately noticeable that there was a large increase and over 50% of men always or almost always buy organic products. Among women who always buy organic, the value decreased slightly. We cannot explain this change directly as it depends on many different factors. This increase in the purchase of organic products among men is proportionally also directly visible through the decreasing share of those who rarely buy organic products. Here the proportion has decreased accordingly. Among those who buy organic products from time to time, the proportion has increased for both genders and is almost at the same level in 2019."
+
+text_farms1 = "According to the results of the survey above, the Swiss population is increasingly buying organic products. So, there should also be a noticeable change in the number or size of organic farms. Does this correspond to the facts?"
+text_farms2 = "It is clearly visible that something has changed on organic farms in the last 20 years. The biggest change is visible on farms larger than 50 hectares. The number of these farms has increased almost ten times from 62 to 517, which is an enormous growth. The number of farms up to 50 hectares also increased considerably from 3,487 to 5,571. The small farms saw the smallest change of slightly more than 100 more farms over the years."
+
+text_conclusion = "The eating habits of the Swiss have changed more than expected over the last 20 years: consumption of certain types of meat, such as pigs and calves, has decreased significantly, while consumption of cows and chickens has surprisingly increased. Despite this increase, the diet of the average Swiss is largely plant-based and if animal products are consumed, it is mainly dairy products. The biggest change has probably been in behaviour towards organic products, and here our visualisations are in line with the general organic boom. In the last few years, this sector has grown strongly as the demand for organic has risen sharply. This change is also clearly visible in the number of organic farms and a rising trend is emerging. In the end, the Swiss will have to continue to change their diet and a declining trend would have to be observed in the future, especially in meat consumption, so that global warming can be stopped or at least slowed down. With this high consumption of meat and animal products, it is not possible to achieve the climate goals - even despite the increasing demand for organic products."
 
 # ---------- #
 # APP & HTML #
@@ -362,7 +373,7 @@ sidebar = html.Div(
                 dbc.NavItem(dbc.NavLink("Meat Consumption", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
                 dbc.NavItem(dbc.NavLink("Shopping Organic Groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
                 dbc.NavItem(dbc.NavLink("Land Usage of Organic Farms", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
-                dbc.NavItem(dbc.NavLink("Summary", href="http://127.0.0.1:8050/buying_organic#summary", active="exact", class_name="navlink")),
+                dbc.NavItem(dbc.NavLink("Conclusion", href="http://127.0.0.1:8050/buying_organic#conclusion", active="exact", class_name="navlink")),
             ],
             vertical=True,
             pills=True,
@@ -400,12 +411,12 @@ app.layout = html.Div([
     html.Div([
         html.P("", id="meat_consumption"),
         html.H2("Meat Consumption"),
-        html.P(text_2),
+        html.P(text_meat1),
         html.Br(), 
         dcc.Graph(figure=fig_barchart),
         html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.20904916.html"),
         html.Br(),
-        html.P(text_2),
+        html.P(text_meat2),
         html.Br()
     ]),
     
@@ -414,12 +425,12 @@ app.layout = html.Div([
     html.Div([
         html.P("", id="buying_organic"),
         html.H2("Shopping Organic Groceries"),
-        html.P(text_2),
+        html.P(text_organic1),
         html.Br(), 
         dcc.Graph(figure=fig_line_org),
         html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.11708774.html"),
         html.Br(),
-        html.P(text_2),
+        html.P(text_organic2),
         html.Br()
     ]),
     
@@ -428,19 +439,19 @@ app.layout = html.Div([
     html.Div([
         html.P("", id="organic_farms"),
         html.H2("Land Usage of Organic Farms"),
-        html.P(text_2),
+        html.P(text_farms1),
         html.Br(), 
         dcc.Graph(figure=fig_bubble),
         html.Label("Datasource: https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.17064714.html"),
         html.Br(),
-        html.P(text_2),
+        html.P(text_farms2),
         html.Br()
     ]),
     
     html.Div([
-        html.P("", id="summary"),
-        html.H2("Summary"),
-        html.P(text_2),
+        html.P("", id="conclusion"),
+        html.H2("Conclusion"),
+        html.P(text_conclusion),
     ]),
     
     # Source
