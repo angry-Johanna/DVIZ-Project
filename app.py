@@ -1,15 +1,11 @@
 import dash
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output, State
-import dash_daq as daq
 import dash_bootstrap_components as dbc
-import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
 from plotly.subplots import make_subplots
-import lorem
 
 # ----------- #
 # IMPORT DATA #
@@ -101,9 +97,8 @@ for index, value in KG_bio_comp_cat.items():
     x=grouped_line[mask].Year, 
     y=grouped_line[mask].Mann,
     name = name_men,
-    #mode = 'lines',
-    text = value,
     marker = {'color' : color_map_line[value]},
+    hovertemplate = '%{y}%<extra></extra>' ,
     line = {'dash': 'dot'}
     ))
     # add line for women
@@ -111,9 +106,8 @@ for index, value in KG_bio_comp_cat.items():
     x=grouped_line[mask].Year, 
     y=grouped_line[mask].Frau,
     name = name_women,
-    #mode = 'lines',
-    text = value,
-    marker = {'color' : color_map_line[value]}
+    marker = {'color' : color_map_line[value]},
+    hovertemplate = '%{y}%<extra></extra>' 
     ))
 
 # make it pretty
@@ -131,6 +125,7 @@ fig_line_org.update_layout(
 
 fig_line_org.layout.paper_bgcolor = paper_bgcolor
 fig_line_org.layout.plot_bgcolor = plot_bgcolor
+#fig_line_org.update_layout(hovermode="x")
 #fig_line_org.update_yaxes(range=[0,70])
 
 
@@ -144,7 +139,9 @@ fig_sunburst = px.sunburst(
     path=["Type","Sub_Type","Food"], 
     values="Amount", 
     color="Type",
-    color_discrete_map={'(?)':'black', "plantbased":"#41ab5d", "animalbased":"#3690c0"}
+    color_discrete_map={"plantbased":"#41ab5d", "animalbased":"#3690c0"},
+    hover_name = "Food",
+    hover_data= {"Amount": ":.2f", "Type":False}
 )
 
 fig_sunburst.update_traces(insidetextorientation='radial')
@@ -179,13 +176,9 @@ comp_meat_5 = comp_meat.query("Year%5==0")
 
 
 fig_barchart = make_subplots(
-    rows=3, 
+    rows=2, 
     cols=2, 
-    specs=[ [{}, {"rowspan": 3}],
-            [{}, None],
-            [{}, None]
-            ],
-    subplot_titles=("Cow Consumption", "Pig Consumption", "Veal Consumption", "Chicken Consumption")
+    subplot_titles=("Cow Meat Consumption", "Chicken Meat Consumption", "Veal Meat Consumption", "Pig Meat Consumption" )
 )
 
 fig_barchart.add_trace(
@@ -193,7 +186,8 @@ fig_barchart.add_trace(
         x=comp_meat_5["Year"], 
         y=comp_meat_5["Cow"],
         name = "Cow",
-        marker = {'color' : "#41ab5d"}
+        marker = {'color' : "#41ab5d"},
+        hovertemplate = '%{y} kg<extra></extra>'
     ),
     row=1, col=1
 )
@@ -203,7 +197,8 @@ fig_barchart.add_trace(
         x=comp_meat_5["Year"], 
         y=comp_meat_5["Veal"],
         name = "Veal",
-        marker = {'color' : "#f7fcb9"}
+        marker = {'color' : "#f7fcb9"},
+        hovertemplate = '%{y} kg<extra></extra>'
     ),
     row=2, col=1
 )
@@ -213,9 +208,10 @@ fig_barchart.add_trace(
         x=comp_meat_5["Year"], 
         y=comp_meat_5["Chicken"],
         name = "Chicken",
-        marker = {'color' : "#74a9cf"}
+        marker = {'color' : "#74a9cf"},
+        hovertemplate = '%{y} kg<extra></extra>'
     ),
-    row=3, col=1
+    row=1, col=2
 )
 
 fig_barchart.add_trace(
@@ -223,9 +219,10 @@ fig_barchart.add_trace(
         x=comp_meat_5["Year"], 
         y=comp_meat_5["Pig"],
         name = "Pig",
-        marker = {'color' : "#045a8d"}
+        marker = {'color' : "#045a8d"},
+        hovertemplate = '%{y} kg<extra></extra>'
     ),
-    row=1, col=2
+    row=2, col=2
 )
 
 fig_barchart.update_layout(
@@ -240,17 +237,26 @@ fig_barchart.update_layout(
 )
 
 # Pig
-fig_barchart.update_yaxes(range=[0, 35], row=2, col=2)
+fig_barchart.update_yaxes(range=[0, 25], row=2, col=2)
 # Cow
-fig_barchart.update_yaxes(range=[0, 13], row=1, col=1)
+fig_barchart.update_yaxes(range=[0, 25], row=1, col=1)
 # Veal
-fig_barchart.update_yaxes(range=[0, 4], row=2, col=1)
+fig_barchart.update_yaxes(range=[0, 25], row=2, col=1)
 # Chicken
-fig_barchart.update_yaxes(range=[0, 13], row=3, col=1)
+fig_barchart.update_yaxes(range=[0, 25], row=1, col=2)
 
+# Pig
+# fig_barchart.update_yaxes(range=[0, 35], row=2, col=2)
+# Cow
+# fig_barchart.update_yaxes(range=[0, 13], row=1, col=1)
+# Veal
+# fig_barchart.update_yaxes(range=[0, 4], row=2, col=1)
+# Chicken
+# fig_barchart.update_yaxes(range=[0, 13], row=1, col=2)
 
 fig_barchart.layout.paper_bgcolor = paper_bgcolor
 fig_barchart.layout.plot_bgcolor = plot_bgcolor
+#fig_barchart.update_layout(hovermode="x")
 
 
 
@@ -300,12 +306,15 @@ fig_bubble = px.scatter(
 	size="Count",
     color="Size",
     size_max = 100,
-    color_discrete_map = color_map_bubble
+    color_discrete_map = color_map_bubble,
+    hover_data={'Year':False}
 )
 
 fig_bubble.update_layout(
     showlegend=False, 
     title_text="Land Usage of Organic Farms",
+    xaxis_title="Year",
+    yaxis_title="Size of farm",
     font=dict(
         family="Helvetica, sans-serif",
         size=15,
@@ -320,10 +329,6 @@ fig_bubble.layout.plot_bgcolor = plot_bgcolor
 # ---------- #
 #    Text    #
 # ---------- #
-
-text_1 = lorem.text()
-text_2 = lorem.paragraph()
-
 text_intro = "With this data storytelling we want to figure out what the Swiss people eat and how their diet has changed over the last years. We are particularly interested in whether there is a correlation between the change in our eating habits and the increased awareness of climate change. In our close environment there are more and more vegetarians / vegans, and more and more people buy organic food. Can this development also be observed in the Swiss population, or are our feelings deceiving us? We want to get to the essence of these questions and find possible answers through our visualisations."
 
 text_foodtype1 = "To get a good overview of the eating habits of the Swiss, let's look at the distribution of the different food-types in our daily diet. The graph below shows the annual amount of food consumed per person in kilograms."
@@ -369,10 +374,15 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavItem(dbc.NavLink("Intro", href="http://127.0.0.1:8050/buying_organic#intro", active="exact", class_name="navlink")),
+                html.Br(),
                 dbc.NavItem(dbc.NavLink("Type of Food Consumed", href="http://127.0.0.1:8050/buying_organic#sunburst", active="exact", class_name="navlink")),
+                html.Br(),
                 dbc.NavItem(dbc.NavLink("Meat Consumption", href="http://127.0.0.1:8050/buying_organic#meat_consumption", active="exact", class_name="navlink")),
+                html.Br(),
                 dbc.NavItem(dbc.NavLink("Shopping Organic Groceries", href="http://127.0.0.1:8050/buying_organic#buying_organic", active="exact", class_name="navlink")),
+                html.Br(),
                 dbc.NavItem(dbc.NavLink("Land Usage of Organic Farms", href="http://127.0.0.1:8050/buying_organic#organic_farms", active="exact", class_name="navlink")),
+                html.Br(),
                 dbc.NavItem(dbc.NavLink("Conclusion", href="http://127.0.0.1:8050/buying_organic#conclusion", active="exact", class_name="navlink")),
             ],
             vertical=True,
