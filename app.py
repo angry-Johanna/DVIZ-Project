@@ -125,9 +125,6 @@ fig_line_org.update_layout(
 
 fig_line_org.layout.paper_bgcolor = paper_bgcolor
 fig_line_org.layout.plot_bgcolor = plot_bgcolor
-#fig_line_org.update_layout(hovermode="x")
-#fig_line_org.update_yaxes(range=[0,70])
-
 
 #---------------------------------------------#
 # ------- SUNBURST FOODTYPE CONSUMPTION ------#
@@ -140,7 +137,6 @@ fig_sunburst = px.sunburst(
     values="Amount", 
     color="Type",
     color_discrete_map={"plantbased":"#41ab5d", "animalbased":"#3690c0"},
-    hover_name = "Food",
     hover_data= {"Amount": ":.2f", "Type":False}
 )
 
@@ -245,20 +241,8 @@ fig_barchart.update_yaxes(range=[0, 25], row=2, col=1)
 # Chicken
 fig_barchart.update_yaxes(range=[0, 25], row=1, col=2)
 
-# Pig
-# fig_barchart.update_yaxes(range=[0, 35], row=2, col=2)
-# Cow
-# fig_barchart.update_yaxes(range=[0, 13], row=1, col=1)
-# Veal
-# fig_barchart.update_yaxes(range=[0, 4], row=2, col=1)
-# Chicken
-# fig_barchart.update_yaxes(range=[0, 13], row=1, col=2)
-
 fig_barchart.layout.paper_bgcolor = paper_bgcolor
 fig_barchart.layout.plot_bgcolor = plot_bgcolor
-#fig_barchart.update_layout(hovermode="x")
-
-
 
 
 #-----------------------------------------#
@@ -471,29 +455,6 @@ app.layout = html.Div([
         html.Footer("Masterminds behind this project: Johanna Koch and Nadja Kaufmann, AI & ML student at HSLU-I 😎")
     ])
 ])
-
-
-
-# --------- #
-# CALLBACKS #
-# --------- #
-
-# Delete later
-# keep nice colormap for maybe later reference
-color_map_bubble_old = {
-    "< 1 ha":"#006837",
-    "1  - <   3 ha":"#41ab5d",
-    "3  - <   5 ha":"#addd8e",
-    "5  - < 10 ha":"#f7fcb9",
-    "10  - <  20 ha":"#d0d1e6",
-    "20  - <  30 ha":"#74a9cf",
-    "30  - < 50 ha":"#3690c0",
-    "50  +  ha":"#045a8d"
-}
-
-# colormap for line chart
-color_map_line_old = {"Always":"#238443","Often":"#78c679","Sometimes":"#a6bddb","Rarely":"#3690c0","Never":"#045a8d"}
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)
